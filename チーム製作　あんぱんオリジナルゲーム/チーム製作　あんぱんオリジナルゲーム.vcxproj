@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Attak Enemy.cpp" />
+    <ClCompile Include="Back ground.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Ending.cpp" />
+    <ClCompile Include="Enemy Bullet .cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Fring Enemy.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
     <ClCompile Include="GameL\DrawFont.cpp" />
@@ -31,8 +39,20 @@
     <ClCompile Include="GameL\SetWindow.cpp" />
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
+    <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Homing Enemy.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Attak Enemy.h" />
+    <ClInclude Include="Back ground.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Ending.h" />
+    <ClInclude Include="Enemy Bullet.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Fring Enemy.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />
     <ClInclude Include="GameL\DirectXDevice.h" />
@@ -45,7 +65,11 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
+    <ClInclude Include="Hero.h" />
+    <ClInclude Include="Homing Enemy.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GameL\Draw2DTex.hlsl" />
