@@ -12,4 +12,6 @@ public:
 	CSceneMain();
 	~CSceneMain();
 	void InitScene();
+	void Scene();
+private:
 };
