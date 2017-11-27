@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Attak Enemy.cpp" />
-    <ClCompile Include="Back ground.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Ending.cpp" />
@@ -47,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attak Enemy.h" />
-    <ClInclude Include="Back ground.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Ending.h" />
