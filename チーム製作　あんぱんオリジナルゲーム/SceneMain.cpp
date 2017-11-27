@@ -4,6 +4,7 @@
 
 //GameLで使用するヘッダー
 #include "GameL\SceneManager.h"
+#include "GameL\DrawTexture.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -27,7 +28,7 @@ CSceneMain::CSceneMain()
 //初期化メソッド
 void CSceneMain::InitScene()
 {
-
+	//グラフィック読み込み
 }
 
 //実行中メソッド

@@ -38,7 +38,7 @@
     <ClCompile Include="GameL\SetWindow.cpp" />
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
-    <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="Homing Enemy.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="SceneMain.cpp" />
@@ -64,7 +64,7 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
-    <ClInclude Include="Hero.h" />
+    <ClInclude Include="ObjHero.h" />
     <ClInclude Include="Homing Enemy.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="main.h" />
