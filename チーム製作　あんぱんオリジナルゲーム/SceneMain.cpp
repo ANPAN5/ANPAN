@@ -23,3 +23,15 @@ CSceneMain::CSceneMain()
 {
 
 }
+
+//初期化メソッド
+void CSceneMain::InitScene()
+{
+
+}
+
+//実行中メソッド
+void CSceneMain::Scene()
+{
+
+}
