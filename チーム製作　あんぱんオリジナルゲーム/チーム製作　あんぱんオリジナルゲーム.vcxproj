@@ -42,6 +42,7 @@
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Homing Enemy.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +70,7 @@
     <ClInclude Include="Homing Enemy.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="SceneMain.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>
