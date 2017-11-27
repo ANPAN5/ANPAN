@@ -30,14 +30,14 @@ void CObjHero::Draw()
 	//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 	src.m_top    = 0.0f;
 	src.m_left   = 0.0f;
-	src.m_right  = 0.0f;
-	src.m_bottom = 0.0f;
+	src.m_right  = 26.0f;
+	src.m_bottom = 31.0f;
 
 	//•\¦ˆÊ’u‚Ìİ’è
 	dst.m_top    = 0.0f;
 	dst.m_left   = 0.0f;
-	dst.m_right  = 0.0f;
-	dst.m_bottom = 0.0f;
+	dst.m_right  = 26.0f;
+	dst.m_bottom = 31.0f;
 
 	//•`‰æ
 	Draw::Draw(0, &src, &dst, c, 0.0f);

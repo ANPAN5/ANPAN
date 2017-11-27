@@ -20,7 +20,7 @@ CSceneMain::CSceneMain()
 }
 
 //デストラクタ
-CSceneMain::CSceneMain()
+CSceneMain::~CSceneMain()
 {
 
 }
@@ -29,6 +29,7 @@ CSceneMain::CSceneMain()
 void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
+	Draw::LoadImageW(L"kariHero.png", 0, TEX_SIZE_512);
 }
 
 //実行中メソッド
