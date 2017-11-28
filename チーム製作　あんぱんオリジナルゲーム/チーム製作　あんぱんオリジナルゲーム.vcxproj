@@ -72,7 +72,7 @@
     <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="GameL\Draw2DTex.hlsl" />
+    <None Include="GameL\Draw2DTex.hlsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{67EA2B63-290C-4DA7-BE63-650F6996C2F7}</ProjectGuid>
