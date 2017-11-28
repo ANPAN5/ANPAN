@@ -14,4 +14,8 @@ class CObjBlock : public CObj
 		void Action();	//アクション
 		void Draw();	//ドロー
 	private:
+		float m_px;		//位置
+		float m_py;
+		float m_vx;		//移動
+		float m_vy;
 };
