@@ -29,7 +29,7 @@ CSceneMain::~CSceneMain()
 void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
-	Draw::LoadImageW(L"kariHero.png", 0, TEX_SIZE_512);
+	Draw::LoadImageW(L"Hero.png", 0, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
