@@ -3,7 +3,7 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 //GameLで使用するヘッダー
-#include "GameL\SceneManager.h"
+#include "GameL\SceneObjManager.h"
 #include "GameL\DrawTexture.h"
 
 //使用するネームスペース
