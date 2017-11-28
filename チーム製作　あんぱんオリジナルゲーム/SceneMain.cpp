@@ -34,6 +34,11 @@ void CSceneMain::InitScene()
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
 	Objs::InsertObj(obj, OBJ_HERO, 10);
+
+	//blockオブジェクト作成
+	CObjBlock* objb = new CObjBlock();
+	Objs::InsertObj(objb, OBJ_BLOCK, 9);
+
 }
 
 //実行中メソッド

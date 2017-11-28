@@ -4,15 +4,15 @@
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト主人公
-class CObjHero : public CObj
+//オブジェクト:ブロック&背景
+class CObjBlock : public CObj
 {
 	public :
-		CObjHero() {};
-		~CObjHero() {};
-		void Init();
-		void Action();
-		void Draw();
+		CObjBlock() {};
+		~CObjBlock() {};
+		void Init();	//イニシャライズ
+		void Action();	//アクション
+		void Draw();	//ドロー
 	private:
 		float m_px;		//位置
 		float m_py;

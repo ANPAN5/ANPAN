@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Attak Enemy.cpp" />
-    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="ObjBlock.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Enemy Bullet .cpp" />
@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attak Enemy.h" />
-    <ClInclude Include="Block.h" />
+    <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Enemy Bullet.h" />
