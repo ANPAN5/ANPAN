@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Attak Enemy.cpp" />
-    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="ObjBlock.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Enemy Bullet .cpp" />
@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attak Enemy.h" />
-    <ClInclude Include="Block.h" />
+    <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Enemy Bullet.h" />
@@ -72,7 +72,7 @@
     <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="GameL\Draw2DTex.hlsl" />
+    <None Include="GameL\Draw2DTex.hlsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{67EA2B63-290C-4DA7-BE63-650F6996C2F7}</ProjectGuid>
@@ -83,7 +83,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
