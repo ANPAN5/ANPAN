@@ -38,8 +38,8 @@ void CSceneMain::InitScene()
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
-
 }
+
 
 //実行中メソッド
 void CSceneMain::Scene()
