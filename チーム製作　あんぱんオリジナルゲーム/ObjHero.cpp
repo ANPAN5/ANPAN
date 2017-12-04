@@ -73,9 +73,9 @@ void CObjHero::Action()
 void CObjHero::Draw()
 {
 	//歩くアニメーション
-	int AniData[4] =
+	int AniData[3] =
 	{
-		1,0,2,0,
+		1,0,2,
 	};
 
 	//描画カラー情報
@@ -92,7 +92,7 @@ void CObjHero::Draw()
 
 	//表示位置の設定
 	dst.m_top    = 0.0f +m_py;
-	dst.m_left   = (70.0f * m_posture) + m_px;
+	dst.m_left   = (     70.0f  * m_posture) + m_px;
 	dst.m_right  = (70 - 50.0f  * m_posture) + m_px;
 	dst.m_bottom = 90.0f+m_py;
 
