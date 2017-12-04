@@ -1,15 +1,15 @@
 #pragma once
 //使用するヘッダー
-#include "GameL\SceneObjManager.h"
+#include "GameL\SceneManager.h"
 //使用するネームスペース
 using namespace GameL;
 
 //オブジェクト:ブロック&背景
-class CObjHero : public CObj
+class CObjBlock : public CObj
 {
 	public :
-		CObjHero() {};
-		~CObjHero() {};
+		CObjBlock() {};
+		~CObjBlock() {};
 		void Init();	//イニシャライズ
 		void Action();	//アクション
 		void Draw();	//ドロー
@@ -22,4 +22,6 @@ class CObjHero : public CObj
 
 		int m_ani_time;	//アニメーションフレーム動作間隔
 		int m_ani_frame;//描画フレーム
+
+		
 };
