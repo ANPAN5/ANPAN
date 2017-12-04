@@ -1,18 +1,18 @@
 #pragma once
 //使用するヘッダー
-#include "GameL\SceneObjManager.h"
+#include "GameL\SceneManager.h"
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト:ブロック&背景
-class CObjBlock : public CObj
+//オブジェクト主人公
+class CObjHero : public CObj
 {
-	public :
-		CObjBlock() {};
-		~CObjBlock() {};
-		void Init();	//イニシャライズ
-		void Action();	//アクション
-		void Draw();	//ドロー
+	public:
+		CObjHero() {};
+		~CObjHero() {};
+		void Init();
+		void Action();
+		void Draw();
 	private:
 		float m_px;		//位置
 		float m_py;
@@ -22,4 +22,6 @@ class CObjBlock : public CObj
 
 		int m_ani_time;	//アニメーションフレーム動作間隔
 		int m_ani_frame;//描画フレーム
+
+		
 };
