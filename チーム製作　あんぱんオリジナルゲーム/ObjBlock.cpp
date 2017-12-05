@@ -2,6 +2,7 @@
 #include "GameL\DrawTexture.h"
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
+#include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
 #include "ObjBlock.h"
@@ -33,7 +34,10 @@ void CObjBlock::Init()
 //アクション
 void CObjBlock::Action()
 {
-
+	//主人公の位置を取得
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	float hx = hero->GetX();
+	float hy = hero->GetY();
 }
 //ドロー
 void CObjBlock::Draw()

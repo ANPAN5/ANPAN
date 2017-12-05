@@ -13,6 +13,12 @@ class CObjHero : public CObj
 		void Init();	//イニシャライズ
 		void Action();	//アクション
 		void Draw();	//ドロー
+
+		float GetX() { return m_px; }
+		float GetY() { return m_py; }
+		void SetX(float x) { m_px = x; }
+		void SetY(float y) { m_py = y; }
+		void SetVY(float vy) { m_vy = vy; }
 	private:
 		float m_px;		//位置
 		float m_py;

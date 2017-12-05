@@ -36,7 +36,7 @@ void CObjHero::Action()
 		m_ani_time += 1;
 	}
 
-	if (Input::GetVKey(VK_LEFT) == true)
+	else if (Input::GetVKey(VK_LEFT) == true)
 	{
 		m_vx -=2.0f;
 		m_posture = 0.0f;
@@ -61,7 +61,7 @@ void CObjHero::Action()
 	}
 
 	//自由落下運動
-	//m_vy += 9.8 / (16.0f);
+	m_vy += 9.8 / (16.0f);
 
 
 	//更新の位置
@@ -73,9 +73,9 @@ void CObjHero::Action()
 void CObjHero::Draw()
 {
 	//歩くアニメーション
-	int AniData[3] =
+	int AniData[4] =
 	{
-		1,0,2,
+		1,0,2,0,
 	};
 
 	//描画カラー情報
@@ -86,15 +86,15 @@ void CObjHero::Draw()
 
 	//切り取り位置の設定
 	src.m_top    = 0.0f;
-	src.m_left   = 0.0f +AniData[m_ani_frame]*64;
-	src.m_right  = 70.0f+AniData[m_ani_frame]*64;
-	src.m_bottom = 90.0f;
+	src.m_left   = 0.0f +AniData[m_ani_frame]*56;
+	src.m_right  = 64.0f+AniData[m_ani_frame]*56;
+	src.m_bottom = 72.0f;
 
 	//表示位置の設定
 	dst.m_top    = 0.0f +m_py;
-	dst.m_left   = (     70.0f  * m_posture) + m_px;
-	dst.m_right  = (70 - 50.0f  * m_posture) + m_px;
-	dst.m_bottom = 90.0f+m_py;
+	dst.m_left   = (     64.0f  * m_posture) + m_px;
+	dst.m_right  = (64 - 64.0f  * m_posture) + m_px;
+	dst.m_bottom = 72.0f+m_py;
 
 	//描画
 	Draw::Draw(0, &src, &dst, c, 0.0f);
