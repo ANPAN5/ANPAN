@@ -20,25 +20,31 @@ void CObjHero::Init()
 
 	m_ani_time = 0;
 	m_ani_frame = 1;		//静止フレームを初期にする
+
+	//blockとの衝突状態確認用
+	m_hit_up    = false;
+	m_hit_down  = false;
+	m_hit_left  = false;
+	m_hit_right = false;
 }
 
 void CObjHero::Action()
 {
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
-	//m_vy = 0.0f;
+	m_vy = 0.0f;
 
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
-		m_vx +=2.0f;
+		m_vx += 2.0f;
 		m_posture = 1.0f;
 		m_ani_time += 1;
 	}
 
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
-		m_vx -=2.0f;
+		m_vx -= 2.0f;
 		m_posture = 0.0f;
 		m_ani_time += 1;
 	}
@@ -60,9 +66,52 @@ void CObjHero::Action()
 		m_ani_frame = 0;
 	}
 
+	/*//主人公とブロックの当たり判定
+	if ((hx + 64.0f > x) && (hx < x + 64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
+	{
+		//上下左右判定
+
+		//vactorの作成
+		float vx = hx - x;
+		float vy = hy - y;
+
+		//長さを求める
+		float len = sqrt(vx*vx + vy*vy);
+
+		//角度を求める
+		float r = atan2(vy, vx);
+		r = r*180.0f / 3.14f;
+
+		if (r <= 0.0f)
+			r = abs(r);
+		else
+			r = 360.0f - abs(r);
+
+		//角度で上下左右を判定
+		if (r<45 && r>0||r>315)
+		{
+			//右
+		}
+		if (r>45 && r<135)
+		{
+			//上
+			hero->SetY(y-64.0f);//ブロックの位置・主人公の幅
+		}
+		if (r>135 && r<255)
+		{
+			//左
+		}
+		if (r>225 && r<315)
+		{
+			//下
+		}
+
+	}*/
+
+
+
 	//自由落下運動
 	m_vy += 9.8 / (16.0f);
-
 
 	//更新の位置
 	m_px += m_vx;
