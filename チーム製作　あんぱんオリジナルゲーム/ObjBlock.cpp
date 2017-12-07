@@ -51,7 +51,7 @@ void CObjBlock::Draw()
 	//îwåiï\é¶
 	src.m_top = 256.0f;
 	src.m_left = 0.0f;
-	src.m_right = 250.0f;
+	src.m_right = 200.0f;
 	src.m_bottom = 512.0f;
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
