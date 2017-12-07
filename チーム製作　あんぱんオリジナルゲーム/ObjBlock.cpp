@@ -51,7 +51,7 @@ void CObjBlock::Draw()
 	//îwåiï\é¶
 	src.m_top = 256.0f;
 	src.m_left = 0.0f;
-	src.m_right = 512.0f;
+	src.m_right = 250.0f;
 	src.m_bottom = 512.0f;
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
@@ -60,10 +60,10 @@ void CObjBlock::Draw()
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 	//êÿÇËéÊÇËà íuÇÃê›íË
-	src.m_top = 0.0f;
-	src.m_left = 320.0f;
-	src.m_right = src.m_left + 64.0f;
-	src.m_bottom = 64.0f;
+	src.m_top = 27.0f;
+	src.m_left = 230.0f;
+	src.m_right = 264.0f;
+	src.m_bottom = 60.0f;
 
 	for (int i = 0; i < 10; i++)
 	{
