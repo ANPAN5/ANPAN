@@ -30,9 +30,8 @@ void CObjHero::Init()
 
 void CObjHero::Action()
 {
-	//移動ベクトルの破棄
-	m_vx = 0.0f;
-	m_vy = 0.0f;
+	//移動
+	m_vx += -(m_vx*0.500);
 
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
@@ -66,7 +65,7 @@ void CObjHero::Action()
 		m_ani_frame = 0;
 	}
 
-	/*//主人公とブロックの当たり判定
+	//主人公とブロックの当たり判定
 	if ((hx + 64.0f > x) && (hx < x + 64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
 	{
 		//上下左右判定
@@ -96,6 +95,7 @@ void CObjHero::Action()
 		{
 			//上
 			hero->SetY(y-64.0f);//ブロックの位置・主人公の幅
+			hero->SetVY(0.0f);
 		}
 		if (r>135 && r<255)
 		{
@@ -106,7 +106,12 @@ void CObjHero::Action()
 			//下
 		}
 
-	}*/
+		//当たってる場合
+		hero->SetX(hx);
+		hero->SetY(0.0f);
+		hero->SetVY(0.0f);
+
+	}
 
 
 
