@@ -38,6 +38,29 @@ void CObjBlock::Action()
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float hx = hero->GetX();
 	float hy = hero->GetY();
+
+	//m_mapの全要素にアクセス
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			if (m_map[i][j] > 0)
+			{
+				//要素番号を座標に変更
+				float x = j*64.0f;
+				float y = i*64.0f;
+
+				//主人公とブロックの当たり判定
+				if ((hx + 64.0f > x) && (hx < +64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
+				{
+					//当たってる場合
+					hero->SetX(hx);
+					hero->SetY(0.0f);
+					hero->SetVY(0.0f);
+				}
+			}
+		}
+	}
 }
 //ドロー
 void CObjBlock::Draw()
