@@ -14,5 +14,5 @@ class CObjBlock : public CObj
 		void Action();	//アクション
 		void Draw();	//ドロー
 	private:
-		int m_map[10][10];//マップ情報(仮)
+		int m_map[10][13];//マップ情報(仮)
 };
