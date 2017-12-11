@@ -39,6 +39,12 @@ void CObjBlock::Action()
 	float hx = hero->GetX();
 	float hy = hero->GetY();
 
+	//主人公の衝突状態確認用フラグの初期化
+	hero->SetUp(false);
+	hero->SetDown(false);
+	hero->SetLeft(false);
+	hero->SetRight(false);
+
 	//m_mapの全要素にアクセス
 	for (int i = 0; i < 10; i++)
 	{
@@ -51,7 +57,7 @@ void CObjBlock::Action()
 				float y = i*64.0f;
 
 				//主人公とブロックの当たり判定
-				if ((hx + 64.0f > x) && (hx < +64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
+				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
 				{
 					//当たってる場合
 					hero->SetX(hx);
