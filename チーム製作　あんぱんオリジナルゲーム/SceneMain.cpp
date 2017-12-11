@@ -33,7 +33,7 @@ void CSceneMain::InitScene()
 	//外部データの読み込み(ステージ情報)
 	unique_ptr<wchar_t> p;	//ステージ情報ポインター
 	int size;				//ステージ情報の大きさ
-	p = Save::ExternalDataOpen(L"")
+	p = Save::ExternalDataOpen(L"Book1.csv", &size);//外部データ読み込み
 
 	//グラフィック読み込み(主人公.ブロック、背景)
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
