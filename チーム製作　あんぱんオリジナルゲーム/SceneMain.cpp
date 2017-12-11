@@ -53,4 +53,3 @@ void CSceneMain::Scene()
 {
 
 }
-//w“ì‘9-3
