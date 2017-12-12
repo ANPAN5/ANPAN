@@ -34,9 +34,9 @@ void CObjTitle::Action()
 void CObjTitle::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	Font::StrDraw(L"Rock Down", 170, 200, 100, c);
+	Font::StrDraw(L"Rock Down", 140, 300, 125, c);
 
-	Font::StrDraw(L"GameStart : Please EnterKey", 120, 380, 40, c);
+	Font::StrDraw(L"GameStart : Please EnterKey", 120, 600, 40, c);
 
-	Font::StrDraw(L"GameEnd : Please EscKey", 157, 450, 40, c);
+	Font::StrDraw(L"GameEnd : Please EscKey", 157, 650, 40, c);
 }
