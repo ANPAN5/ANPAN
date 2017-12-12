@@ -13,6 +13,8 @@ using namespace GameL;
 //イニシャライズ
 void CObjBlock::Init()
 {
+	m_scroll = 0.0f;
+
 	//マップ情報
 	int block_date[200][13] =
 	{
