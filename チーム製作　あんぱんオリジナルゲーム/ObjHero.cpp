@@ -1,7 +1,7 @@
 //使用するヘッダー
 #include "GameL\DrawTexture.h"
 #include "GameL\WinInputs.h"
-#include "GameL\SceneObjManager.h"
+#include "GameL\SceneManager.h"
 
 
 #include "GameHead.h"
@@ -31,8 +31,14 @@ void CObjHero::Init()
 
 void CObjHero::Action()
 {
-	//移動
-	m_vx += -(m_vx*0.500);
+	//Xキー入力でジャンプ
+	if (Input::GetVKey('X') == true)
+	{
+		if (m_hit_down == true)
+		{
+			m_vy = -20;
+		}
+	}
 
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
@@ -67,6 +73,11 @@ void CObjHero::Action()
 		m_ani_frame = 0;
 	}
 
+
+
+	//移動
+	m_vx += -(m_vx*0.500);
+
 	//自由落下運動
 	m_vy += 9.8 / (16.0f);
 
@@ -74,52 +85,6 @@ void CObjHero::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//主人公とブロックの当たり判定
-	if ((hx + 64.0f > x) && (hx < x + 64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
-	{
-		//上下左右判定
-		
-		//vectorの作成
-		float vx = hx - x;
-		float vy = hy - y;
-
-		//長さを求める
-		float len = sqrt(vx*vx + vy*vy);
-
-		//角度を求める
-		float r = atan2(vy, vx);
-		r = r*180.0f / 3.14f;
-
-		if (r <= 0.0f)
-			r = abs(r);
-		else
-			r = 360.0f - abs(r);
-
-		//角度で上下左右を判定
-		if (r<45 && r>0 || r>315)
-		{
-			//右
-		}
-		if (r>45 && r<135)
-		{
-			//上
-			hero->SetY(y - 64.0f);//ブロックの位置-主人公の幅
-			hero->SetVY(0.0f);
-		}
-		if (r>135 && r<225)
-		{
-			//左
-		}
-		if (r>225 && r<315)
-		{
-			//下
-		}
-
-		//あたってる場合
-		hero->SetX(hx);
-		hero->SetY(0.0f);
-		hero->SetVY(0.0f);
-	}
 }
 
 void CObjHero::Draw()

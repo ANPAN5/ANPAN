@@ -249,6 +249,44 @@ void CObjBlock::Action()
 				//主人公とブロックの当たり判定
 				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
 				{
+					//上下左右判定
+
+					//vectorの作成
+					float vx = hx - x;
+					float vy = hy - y;
+
+					//長さを求める
+					float len = sqrt(vx*vx + vy*vy);
+
+					//角度を求める
+					float r = atan2(vy, vx);
+					r = r*180.0f / 3.14f;
+
+					if (r <= 0.0f)
+						r = abs(r);
+					else
+						r = 360.0f - abs(r);
+
+					//角度で上下左右を判定
+					if (r < 45 && r>0 || r > 315)
+					{
+						//右
+					}
+					if (r > 45 && r < 135)
+					{
+						//上
+						hero->SetY(y - 64.0f);//ブロックの位置-主人公の幅
+						hero->SetVY(0.0f);
+					}
+					if (r > 135 && r < 225)
+					{
+						//左
+					}
+					if (r > 225 && r < 315)
+					{
+						//下
+					}
+
 					//当たってる場合
 					hero->SetX(hx);
 					hero->SetY(0.0f);
@@ -284,6 +322,8 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
+	 //scroll実験用
+
 	for (int i = 0; i < 200; i++)
 	{
 		for (int j = 0; j < 13; j++)
@@ -294,7 +334,7 @@ void CObjBlock::Draw()
 				dst.m_top	 = i*64.0f;
 				dst.m_left	 = j*64.0f;
 				dst.m_right  = dst.m_left+64.0;
-				dst.m_bottom = dst.m_top+64.0;
+				dst.m_bottom = dst.m_top + 64.0 ;
 
 
 				//描画
