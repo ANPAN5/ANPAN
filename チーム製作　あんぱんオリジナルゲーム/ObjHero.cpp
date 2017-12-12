@@ -1,7 +1,7 @@
 //使用するヘッダー
 #include "GameL\DrawTexture.h"
 #include "GameL\WinInputs.h"
-#include "GameL\SceneObjManager.h"
+#include "GameL\SceneManager.h"
 
 
 #include "GameHead.h"
@@ -67,14 +67,8 @@ void CObjHero::Action()
 		m_ani_frame = 0;
 	}
 
-	//自由落下運動
-	m_vy += 9.8 / (16.0f);
 
-	//更新の位置
-	m_px += m_vx;
-	m_py += m_vy;
-
-	//主人公とブロックの当たり判定
+	/*//主人公とブロックの当たり判定
 	if ((hx + 64.0f > x) && (hx < x + 64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
 	{
 		//上下左右判定
@@ -119,7 +113,15 @@ void CObjHero::Action()
 		hero->SetX(hx);
 		hero->SetY(0.0f);
 		hero->SetVY(0.0f);
-	}
+	}*/
+
+	//自由落下運動
+	m_vy += 9.8 / (16.0f);
+
+	//更新の位置
+	m_px += m_vx;
+	m_py += m_vy;
+
 }
 
 void CObjHero::Draw()
