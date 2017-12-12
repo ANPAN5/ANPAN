@@ -14,5 +14,7 @@ class CObjBlock : public CObj
 		void Action();	//アクション
 		void Draw();	//ドロー
 	private:
-		int m_map[200][13];//マップ情報(仮)
+		int m_map[200][13];//マップ情報
+
+		float m_scroll;		//上下スクロール用
 };
