@@ -36,7 +36,7 @@ void CObjHero::Action()
 	{
 		if (m_hit_down == true)
 		{
-			m_vy = -20;
+			m_vy = -16;
 		}
 	}
 
@@ -76,10 +76,10 @@ void CObjHero::Action()
 
 
 	//移動
-	m_vx += -(m_vx*0.1000);
+	m_vx += -(m_vx*0.3000);
 
 	//自由落下運動
-	m_vy += 9.8 / (16.0f);
+	m_vy += 8.5/ (16.0f);
 
 	//更新の位置
 	m_px += m_vx;
