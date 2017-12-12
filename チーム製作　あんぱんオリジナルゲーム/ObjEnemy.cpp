@@ -1,4 +1,4 @@
-//使用するヘッダーファイル
+/*//使用するヘッダーファイル
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
@@ -147,4 +147,4 @@ void CObjEnemy::Draw()
 
 	//描画
 	Draw::Draw(0, &src, &dst, c, 0.0f);
-}
+}*/

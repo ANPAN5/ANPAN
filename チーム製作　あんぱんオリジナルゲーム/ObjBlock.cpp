@@ -232,16 +232,16 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//上方スクロールライン
-	if (hy = 100)
+	if (hy < 500)
 	{
-		hero->SetY(100);
+		hero->SetY(500);
 		m_scroll = hero->GetVY();
 	}
 
 	//下方スクロールライン
-	if (hy = 300)
+	if (hy > 5)
 	{
-		hero->SetY(300);
+		hero->SetY(500);
 		m_scroll = hero->GetVY();
 	}
 
@@ -266,13 +266,13 @@ void CObjBlock::Action()
 				float y = i*64.0f;
 
 				//主人公とブロックの当たり判定
-				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f > y) && (hy < y + 64.0f))
+				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy +(-m_scroll)+ 64.0f > y) && (hy+(-m_scroll) < y + 64.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
 					float vx = hx - x;
-					float vy = hy - y;
+					float vy = (hy+(-m_scroll)) - y;
 
 					//長さを求める
 					float len = sqrt(vx*vx + vy*vy);
@@ -302,7 +302,7 @@ void CObjBlock::Action()
 						{
 							//上
 							hero->SetDown(true);	//主人公の下の部分が衝突している
-							hero->SetY(y - 64.0f);  //ブロックの位置-主人公の幅
+							hero->SetY(y - 64.0f+(m_scroll));  //ブロックの位置-主人公の幅
 							hero->SetVY(0.0f);
 						}
 						if (r > 135 && r < 225)
@@ -316,7 +316,7 @@ void CObjBlock::Action()
 						{
 							//下
 							hero->SetUp(true);	  //主人公の上の部分が衝突している
-							hero->SetY(y + 64.0f);//ブロックの位置+主人公の幅
+							hero->SetY(y + 64.0f+(m_scroll));//ブロックの位置+主人公の幅
 							if (hero->GetVY() < 0)
 							{
 								hero->SetVY(0.0f);
@@ -367,10 +367,10 @@ void CObjBlock::Draw()
 			if (m_map[i][j] > 0)
 			{
 				//表示位置の設定
-				dst.m_top	 = i*64.0f;
-				dst.m_left	 = j*64.0f;
+				dst.m_top = i*64.0f + m_scroll;
+				dst.m_left	 = j*64.0f ;
 				dst.m_right  = dst.m_left+70.0;
-				dst.m_bottom = dst.m_top + 70.0 + m_scroll;
+				dst.m_bottom = dst.m_top + 70.0 ;
 
 
 				//描画
