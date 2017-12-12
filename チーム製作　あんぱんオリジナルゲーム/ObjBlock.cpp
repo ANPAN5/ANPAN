@@ -231,6 +231,23 @@ void CObjBlock::Action()
 	float hx = hero->GetX();
 	float hy = hero->GetY();
 
+	//上方スクロールライン
+	if (hy = 100)
+	{
+		hero->SetY(100);
+		m_scroll = hero->GetVY();
+	}
+
+	//下方スクロールライン
+	if (hy = 300)
+	{
+		hero->SetY(300);
+		m_scroll = hero->GetVY();
+	}
+
+
+
+
 	//主人公の衝突状態確認用フラグの初期化
 	hero->SetUp(false);
 	hero->SetDown(false);
@@ -337,7 +354,6 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
-	m_scroll -= 3.0f; //scroll実験用
 
 	for (int i = 0; i < 200; i++)
 	{
@@ -349,7 +365,7 @@ void CObjBlock::Draw()
 				dst.m_top	 = i*64.0f;
 				dst.m_left	 = j*64.0f;
 				dst.m_right  = dst.m_left+70.0;
-				dst.m_bottom = dst.m_top + 70.0 ;
+				dst.m_bottom = dst.m_top + 70.0 + m_scroll;
 
 
 				//描画
