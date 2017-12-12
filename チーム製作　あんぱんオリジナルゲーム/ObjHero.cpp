@@ -13,7 +13,7 @@ using namespace GameL;
 //‰Šú‰»
 void CObjHero::Init()
 {
-	m_px = 0.0f;
+	m_px = 80.0f;
 	m_py = 0.0f;
 	m_vx = 0.0f;
 	m_vy = 0.0f;
