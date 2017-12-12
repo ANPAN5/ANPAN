@@ -270,30 +270,42 @@ void CObjBlock::Action()
 						r = 360.0f - abs(r);
 
 					//角度で上下左右を判定
-					if (r < 45 && r>0 || r > 315)
+					if ((r < 45 && r>0) || r > 315)
 					{
 						//右
+						hero->SetRight(true);	//主人公の左の部分が衝突している
+						hero->SetX(x + 64.0f);	//ブロックの位置+主人公の幅
+						hero->SetVX(-hero->GetVX()*0.1f);//-VX*反発係数
 					}
 					if (r > 45 && r < 135)
 					{
 						//上
-						hero->SetDown(true);	//主人公から見て、下の部分が衝突している
+						hero->SetDown(true);	//主人公の下の部分が衝突している
 						hero->SetY(y - 64.0f);  //ブロックの位置-主人公の幅
 						hero->SetVY(0.0f);
 					}
 					if (r > 135 && r < 225)
 					{
 						//左
+						hero->SetLeft(true);	//主人公の右の部分が衝突している
+						hero->SetX(x - 64.0f);	//ブロックの位置-主人公の幅
+						hero->SetVX(-hero->GetVX()*0.1f);//-VX*反発係数
 					}
 					if (r > 225 && r < 315)
 					{
 						//下
+						hero->SetUp(true);	  //主人公の上の部分が衝突している
+						hero->SetY(y + 64.0f);//ブロックの位置+主人公の幅
+						if (hero->GetVY() < 0)
+						{
+							hero->SetVY(0.0f);
+						}
 					}
 
 					//当たってる場合
-					hero->SetX(hx);
-					hero->SetY(0.0f);
-					hero->SetVY(0.0f);
+					//hero->SetX(hx);
+					//hero->SetY(0.0f);
+					//hero->SetVY(0.0f);
 				}
 			}
 		}
