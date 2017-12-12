@@ -322,7 +322,7 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
-	 //scrollé¿å±óp
+	m_scroll -= 3.0f; //scrollé¿å±óp
 
 	for (int i = 0; i < 200; i++)
 	{
@@ -334,7 +334,7 @@ void CObjBlock::Draw()
 				dst.m_top	 = i*64.0f;
 				dst.m_left	 = j*64.0f;
 				dst.m_right  = dst.m_left+64.0;
-				dst.m_bottom = dst.m_top + 64.0 ;
+				dst.m_bottom = dst.m_top +64.0 ;
 
 
 				//ï`âÊ
