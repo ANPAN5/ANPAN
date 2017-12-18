@@ -29,8 +29,8 @@ Ending::~Ending()
 //初期化メソッド
 void Ending::InitScene()
 {
-	Font::SetStrTex(L"");
-	Font::SetStrTex(L"");
+	Font::SetStrTex(L"You did it!");
+	Font::SetStrTex(L"Game Clear");
 
 	//クリアオブジェクト作成
 	CObjEnding*obj = new CObjEnding();
