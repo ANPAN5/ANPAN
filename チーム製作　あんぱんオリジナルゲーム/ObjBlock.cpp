@@ -232,17 +232,17 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//上方スクロールライン
-	if (hy < 500)
+	if (hy < 100)
 	{
-		hero->SetY(500);
-		m_scroll = hero->GetVY();
+		hero->SetY(100);			//主人公はラインを超えないようにする
+		m_scroll -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//下方スクロールライン
-	if (hy > 5)
+	if (hy > 500)
 	{
-		hero->SetY(500);
-		m_scroll = hero->GetVY();
+		hero->SetY(500);			//主人公はラインを超えないようにする
+		m_scroll -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 
@@ -359,6 +359,8 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
+	
+
 
 	for (int i = 0; i < 200; i++)
 	{
@@ -367,7 +369,7 @@ void CObjBlock::Draw()
 			if (m_map[i][j] > 0)
 			{
 				//表示位置の設定
-				dst.m_top = i*64.0f + m_scroll;
+				dst.m_top = i*64.0f - m_scroll;
 				dst.m_left	 = j*64.0f ;
 				dst.m_right  = dst.m_left+70.0;
 				dst.m_bottom = dst.m_top + 70.0 ;
