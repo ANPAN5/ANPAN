@@ -24,7 +24,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Enemy Bullet .cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="ObjEnemy.cpp" />
     <ClCompile Include="Fring Enemy.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
@@ -52,7 +52,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Enemy Bullet.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="Fring Enemy.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />

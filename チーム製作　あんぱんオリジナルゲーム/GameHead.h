@@ -9,7 +9,7 @@ enum OBJ_NAME
 	OBJ_HERO,
 	OBJ_BLOCK,
 	OBJ_TITLE,
-	OBJ_ENDING,
+	OBJ_ENEMY,
 };
 //------------------------------------------------
 
@@ -56,7 +56,6 @@ struct UserData
 #include "ObjHero.h"
 #include "ObjBlock.h"
 #include"Title.h"
-#include"ObjEnding.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
