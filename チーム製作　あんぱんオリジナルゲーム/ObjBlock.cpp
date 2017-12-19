@@ -235,18 +235,15 @@ void CObjBlock::Action()
 	if (hy < 100)
 	{
 		hero->SetY(100);			//主人公はラインを超えないようにする
-		m_scroll -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
+		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//下方スクロールライン
-	if (hy > 500)
+	if (hy > 400)
 	{
-		hero->SetY(500);			//主人公はラインを超えないようにする
-		m_scroll -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
+		hero->SetY(400);			//主人公はラインを超えないようにする
+		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
-
-
-
 
 	//主人公の衝突状態確認用フラグの初期化
 	hero->SetUp(false);
