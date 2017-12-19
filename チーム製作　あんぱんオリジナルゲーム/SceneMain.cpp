@@ -33,7 +33,23 @@ void CSceneMain::InitScene()
 	//外部データの読み込み(ステージ情報)
 	unique_ptr<wchar_t> p;	//ステージ情報ポインター
 	int size;				//ステージ情報の大きさ
+
 	p = Save::ExternalDataOpen(L"Book1.csv", &size);//外部データ読み込み
+
+	int map[200][13];
+	int count = 1;
+	for (int i = 0; i < 200; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			int w = 0;
+			swscanf_s(&p.get()[count], L"%d", &w);
+
+			map[i][j] = w;
+			count += 2;
+
+		}
+	}
 
 	//グラフィック読み込み(主人公.ブロック、背景)
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
@@ -43,7 +59,7 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(obj, OBJ_HERO, 10);
 
 	//blockオブジェクト作成
-	CObjBlock* objb = new CObjBlock();
+	CObjBlock* objb = new CObjBlock(map);
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 }
 
