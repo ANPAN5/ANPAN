@@ -73,8 +73,6 @@ void CObjHero::Action()
 		m_ani_frame = 0;
 	}
 
-
-
 	//ˆÚ“®
 	m_vx += -(m_vx*0.3000);
 

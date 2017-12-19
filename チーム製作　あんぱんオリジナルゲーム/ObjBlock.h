@@ -16,11 +16,11 @@ class CObjBlock : public CObj
 
 
 		void SetScroll(float s) { m_scroll = s; }
-		float GetScroll() { return m_scroll; }
+		float GetScroll()		{ return m_scroll; }
 
 
 	private:
-		int m_map[200][13];//マップ情報
+		int m_map[200][13];	//マップ情報
 
 		float m_scroll;		//左右？スクロール用
 };
