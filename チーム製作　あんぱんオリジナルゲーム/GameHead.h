@@ -60,6 +60,8 @@ struct UserData
 #include "ObjBlock.h"
 #include "Title.h"
 #include "ObjEnemy.h"
+#include "ObjEnding.h"
+#include "ObjGameOver.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
