@@ -8,7 +8,7 @@ using namespace GameL;
 class CObjBlock : public CObj
 {
 	public:
-		CObjBlock() {};
+		CObjBlock(int map[200][13]);
 		~CObjBlock() {};
 		void Init();	//イニシャライズ
 		void Action();	//アクション
@@ -22,5 +22,5 @@ class CObjBlock : public CObj
 	private:
 		int m_map[200][13];	//マップ情報
 
-		float m_scroll;		//左右？スクロール用
+		float m_scroll;		//左右スクロール用
 };
