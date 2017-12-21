@@ -62,8 +62,8 @@ void CObjBlock::Action()
 				float x = j*64.0f;
 				float y = i*64.0f;
 
-				//主人公とブロックの当たり判定                                             //↓を+にすると落下速度チャージ
-				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy - (m_scroll) < y + 64.0f))
+				//主人公とブロックの当たり判定                                             //↓を-にすると落下速度チャージ
+				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy + (m_scroll) < y + 64.0f))
 				{
 					//上下左右判定
 
@@ -84,7 +84,7 @@ void CObjBlock::Action()
 						r = 360.0f - abs(r);
 
 					//lenがある一定の長さより短い場合判定に入る
-					if (len < 88.0f)
+					if (len < 75.0f)
 					{
 
 						//角度で上下左右を判定
@@ -190,5 +190,5 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[])
 	src.m_bottom = src.m_top + 64.0f;
 	//描画
 	Draw::Draw(0, &src, dst, c, 0.0f);
-	
+
 }*/
