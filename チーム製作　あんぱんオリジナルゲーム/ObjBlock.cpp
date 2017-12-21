@@ -173,3 +173,22 @@ void CObjBlock::Draw()
 		}
 	}
 }
+
+//BlockDrawMethod関数
+//引数1　float   x  :リソース切り取り位置X
+//引数1　float   x  :リソース切り取り位置Y
+//引数3　RECT_F* dst:描画位置
+//引数4 float   c[] :カラー情報
+//ブロックを64X64限定描画用。　リソース切り取り位置のみｘ・ｙで
+//設定できる
+void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[])
+{
+	RECT_F src;
+	src.m_top = y;
+	src.m_left = x;
+	src.m_right = src.m_left + 64.0f;
+	src.m_bottom = src.m_top + 64.0f;
+	//描画
+	Draw::Draw(0, &src, dst, c, 0.0f);
+
+}
