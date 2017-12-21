@@ -62,8 +62,8 @@ void CObjBlock::Action()
 				float x = j*64.0f;
 				float y = i*64.0f;
 
-				//主人公とブロックの当たり判定                                             //↓を+にすると落下速度チャージ
-				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy - (m_scroll) < y + 64.0f))
+				//主人公とブロックの当たり判定                                             //↓を-にすると落下速度チャージ
+				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy + (m_scroll) < y + 64.0f))
 				{
 					//上下左右判定
 
@@ -174,7 +174,7 @@ void CObjBlock::Draw()
 	}
 }
 
-//BlockDrawMethod関数
+/*//BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
 //引数1　float   x  :リソース切り取り位置Y
 //引数3　RECT_F* dst:描画位置
@@ -191,4 +191,4 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[])
 	//描画
 	Draw::Draw(0, &src, dst, c, 0.0f);
 
-}
+}*/
