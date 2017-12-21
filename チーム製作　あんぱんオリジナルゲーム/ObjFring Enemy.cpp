@@ -3,7 +3,7 @@
 #include "GameL\HitBoxManager.h"
 
 #include "GameHead.h"
-#include "Fring Enemy.h"
+#include "ObjFring Enemy.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -62,15 +62,15 @@ void FringEnemy::Draw()
 	RECT_F dst;
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
+	src.m_top = 20.0f;
 	src.m_left = 0.0f;
-	src.m_right = 30.0f+ src.m_left;
-	src.m_bottom = 30.0f+ src.m_top;
+	src.m_right = 209.0f;
+	src.m_bottom = 107.0f;
 	//表示位置の設定
-	dst.m_top = 0.0f;
-	dst.m_left = 20.0f;
-	dst.m_right = 30.0f+dst.m_left;
-	dst.m_bottom = 30.0f+dst.m_top;
+	dst.m_top = 60.0f +m_y;
+	dst.m_left = 50.0f+m_x;
+	dst.m_right = 300.0f+m_x;
+	dst.m_bottom = 300.0f+m_y;
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描画
 	Draw::Draw(1,&src, &dst,c,0.0f);
 }

@@ -54,7 +54,7 @@ void CSceneMain::InitScene()
 	//グラフィック読み込み(主人公.ブロック、背景)
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 	//グラフィック読み込み（飛ぶ敵）
-	Draw::LoadImageW(L"FringEnemy.png", 1, TEX_SIZE_64);
+	Draw::LoadImageW(L"FringEnemy.png", 1, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
@@ -64,9 +64,13 @@ void CSceneMain::InitScene()
 	CObjBlock* objb = new CObjBlock(map);
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 
-	//Test用 敵オブジェクト作成
+	//飛ぶ敵オブジェクト
+	FringEnemy* obj_fring_enemy = new FringEnemy(300, 300);
+	Objs::InsertObj(obj_fring_enemy, OBJ_FRING_ENEMY, 15);
+
+	/*//Test用 敵オブジェクト作成
 	CObjEnemy* obje = new CObjEnemy();
-	Objs::InsertObj(obje,OBJ_ENEMY,10);
+	Objs::InsertObj(obje,OBJ_ENEMY,10);*/
 }
 
 //実行中メソッド

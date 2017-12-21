@@ -59,6 +59,7 @@ struct UserData
 #include "ObjHero.h"
 #include "ObjBlock.h"
 #include "Title.h"
+#include "ObjFring Enemy.h"
 #include "ObjEnemy.h"
 #include "ObjEnding.h"
 #include "ObjGameOver.h"

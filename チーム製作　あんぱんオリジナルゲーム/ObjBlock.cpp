@@ -174,7 +174,7 @@ void CObjBlock::Draw()
 	}
 }
 
-//BlockDrawMethod関数
+/*//BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
 //引数1　float   x  :リソース切り取り位置Y
 //引数3　RECT_F* dst:描画位置
@@ -190,5 +190,5 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[])
 	src.m_bottom = src.m_top + 64.0f;
 	//描画
 	Draw::Draw(0, &src, dst, c, 0.0f);
-
-}
+	
+}*/
