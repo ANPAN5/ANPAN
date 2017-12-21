@@ -22,7 +22,7 @@ void FringEnemy::Init()
 	m_vy = 0.0f;
 
 	//当たり判定用Hit Boxを作成
-	Hits::SetHitBox(this, m_x, m_y, 32, 32, ELEMENT_ENEMY,OBJ_FRING_ENEMY, 1);
+	Hits::SetHitBox(this, m_x, m_y, 100, 100, ELEMENT_ENEMY,OBJ_FRING_ENEMY, 1);
 }
 
 //アクション
@@ -42,7 +42,7 @@ void FringEnemy::Action()
 
 	//HitBoxの内容を更新
 	CHitBox* hit = Hits::GetHitBox(this);
-	hit->SetPos(m_x, m_y);
+	hit->SetPos(m_x+65, m_y+70);
 
 	//足と接触してるるかどうかを調べる
 	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
