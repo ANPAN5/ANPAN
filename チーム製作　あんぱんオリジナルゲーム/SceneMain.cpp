@@ -63,8 +63,11 @@ void CSceneMain::InitScene()
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock(map);
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
-}
 
+	//Test用 敵オブジェクト作成
+	CObjEnemy* obje = new CObjEnemy();
+	Objs::InsertObj(obje,OBJ_ENEMY,10);
+}
 
 //実行中メソッド
 void CSceneMain::Scene()
