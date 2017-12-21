@@ -1,5 +1,4 @@
-/*
-//使用するヘッダーファイル
+/*//使用するヘッダーファイル
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
@@ -101,7 +100,7 @@ void CObjEnemy::Action()
 	int d;
 
 	//ブロックとの当たり判定実行
-CObjBlock: pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+CObjBlock* pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	pb->BlockHit(&m_px, &m_py, false,
 		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy, &d);
 
@@ -110,10 +109,10 @@ CObjBlock: pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	m_py += m_vy;
 
 	//ブロック情報を持ってくる
-CObjBlock: block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-CHitBox: Hits::GetHitBox(this);
+CHitBox* hit=Hits::GetHitBox(this);
 	hit->SetPos(m_px, m_py);
 }
 

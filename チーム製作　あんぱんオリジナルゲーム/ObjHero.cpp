@@ -3,7 +3,6 @@
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 
-
 #include "GameHead.h"
 #include "ObjHero.h"
 
@@ -13,7 +12,7 @@ using namespace GameL;
 //‰Šú‰»
 void CObjHero::Init()
 {
-	m_px = 80.0f;
+	m_px = 70.0f;
 	m_py = 0.0f;
 	m_vx = 0.0f;
 	m_vy = 0.0f;

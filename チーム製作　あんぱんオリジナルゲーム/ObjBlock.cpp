@@ -31,16 +31,16 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//上方スクロールライン
-	if (hy < 100)
+	if (hy < 200)
 	{
-		hero->SetY(100);			//主人公はラインを超えないようにする
+		hero->SetY(200);			//主人公はラインを超えないようにする
 		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//下方スクロールライン
-	if (hy > 400)
+	if (hy > 500)
 	{
-		hero->SetY(400);			//主人公はラインを超えないようにする
+		hero->SetY(500);			//主人公はラインを超えないようにする
 		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
@@ -62,8 +62,8 @@ void CObjBlock::Action()
 				float x = j*64.0f;
 				float y = i*64.0f;
 
-				//主人公とブロックの当たり判定
-				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(-m_scroll)- y) && (hy - ( -m_scroll) < y + 64.0f))
+				//主人公とブロックの当たり判定                                             //↓を+にすると落下速度チャージ
+				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy - (m_scroll) < y + 64.0f))
 				{
 					//上下左右判定
 
