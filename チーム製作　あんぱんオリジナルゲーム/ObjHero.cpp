@@ -41,6 +41,12 @@ void CObjHero::Action()
 		}
 	}
 
+	//Zキー入力で弾丸(トゲ)発射
+	if (Input::GetVKey('Z') == true)
+	{
+		
+	}
+
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{

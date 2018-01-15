@@ -14,6 +14,7 @@ enum OBJ_NAME
 	OBJ_ENDING,
 	OBJ_GAME_OVER,
 	OBJ_FRING_ENEMY,
+	OBJ_BULLET,
 };
 //------------------------------------------------
 
@@ -65,6 +66,7 @@ struct UserData
 #include "ObjEnemy.h"
 #include "ObjEnding.h"
 #include "ObjGameOver.h"
+#include "CObjBullet.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
