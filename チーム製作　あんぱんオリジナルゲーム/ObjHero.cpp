@@ -26,6 +26,8 @@ void CObjHero::Init()
 	m_hit_down  = false;
 	m_hit_left  = false;
 	m_hit_right = false;
+
+	m_block_type = 0;    //“¥‚ñ‚Å‚¢‚éblockŠm”F—p
 }
 
 void CObjHero::Action()

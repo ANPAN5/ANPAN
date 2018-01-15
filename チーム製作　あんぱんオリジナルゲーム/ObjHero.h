@@ -18,11 +18,13 @@ class CObjHero : public CObj
 		float GetY()	{ return m_py; }
 		float GetVY()	{ return m_vy; }
 		float GetVX()	{ return m_vx; }
+		int GetBT() { return m_block_type;}
 
 		void SetX(float x)	 { m_px = x; }
 		void SetY(float y)	 { m_py = y; }
 		void SetVY(float vy) { m_vy = vy; }
 		void SetVX(float vx) { m_vx = vx; }
+		void SetBT(int t){m_block_type=t;}
 
 		void SetUp   (bool b) { m_hit_up = b; }
 		void SetDown (bool b) { m_hit_down = b; }
@@ -43,4 +45,7 @@ class CObjHero : public CObj
 		bool m_hit_down;
 		bool m_hit_left;
 		bool m_hit_right;
+
+		//“¥‚ñ‚Å‚¢‚éblock‚ÌŽí—ÞŠm”F—p
+		int m_block_type;
 };

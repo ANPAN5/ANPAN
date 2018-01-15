@@ -20,7 +20,7 @@ class CObjBlock : public CObj
 
 
 	private:
-		//void BlockDraw(float x, float y, RECT_F*dst, float c[]);
+		void BlockDraw(float x, float y, RECT_F*dst, float c[]);
 		int m_map[200][13];	//マップ情報
 
 		float m_scroll;		//左右スクロール用

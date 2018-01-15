@@ -43,6 +43,7 @@
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="Homing Enemy.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
@@ -74,6 +75,7 @@
     <ClInclude Include="Homing Enemy.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="ObjTime.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="SceneTitle.h" />
