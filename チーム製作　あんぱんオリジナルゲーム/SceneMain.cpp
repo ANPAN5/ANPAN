@@ -59,6 +59,8 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 	//グラフィック読み込み（飛ぶ敵）
 	Draw::LoadImageW(L"FringEnemy.png", 1, TEX_SIZE_512);
+	//グラフィック読み込み(追跡敵)
+	Draw::LoadImageW(L"幽霊　普.png", 2, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
@@ -79,6 +81,10 @@ void CSceneMain::InitScene()
 	/*//Test用 敵オブジェクト作成
 	CObjEnemy* obje = new CObjEnemy();
 	Objs::InsertObj(obje,OBJ_ENEMY,10);*/
+
+	//Test用 敵オブジェクト作成
+	CObjHomingEnemy* obj_homing_enemy = new CObjHomingEnemy(300,300);
+	Objs::InsertObj(obj_homing_enemy,OBJ_HOMING_ENEMY,15);
 
 	//Test 弾丸オブジェクト作成
 	CObjBullet* obj_b = new CObjBullet(200,200);
