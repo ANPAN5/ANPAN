@@ -8,13 +8,11 @@ using namespace GameL;
 class CObjEnemy : public CObj
 {
 public:
-	CObjEnemy(float x, float y) {};
+	CObjEnemy() {};
 	~CObjEnemy() {};
 	void Init();      //イニシャライズ
 	void Action();	  //アクション
 	void Draw();      //ドロー
-
-	float GetVx() { return m_vx; }
 
 private:
 	float m_px;     //位置
@@ -29,12 +27,10 @@ private:
 	float m_speed_power;	//スピードパワー
 	float m_ani_max_time;	//アニメーション動作間隔最大値
 
-							//blockとの衝突状態確認用
+	//blockとの衝突状態確認用
 	bool m_hit_up;
 	bool m_hit_down;
 	bool m_hit_left;
 	bool m_hit_right;
 
-	//移動の向き制御
-	bool m_move;
 };
