@@ -55,9 +55,9 @@ void CObjHero::Action()
 		m_ani_time += 1;
 	}
 
-
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
+
 		m_vx -= 2.0f;
 		m_posture = 0.0f;
 		m_ani_time += 1;

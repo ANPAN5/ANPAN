@@ -1,4 +1,3 @@
-/*
 //使用するヘッダーファイル
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
@@ -105,10 +104,10 @@ void CObjEnemy::Draw()
 	RECT_F dst; //描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top	 = 64.0f;
-	src.m_left	 = 0.0f	 + AniData[m_ani_frame] * 64;
-	src.m_right	 = 64.0f + AniData[m_ani_frame] * 64;
-	src.m_bottom = src.m_top + 64.0f;
+	src.m_top	 = 20.0f;
+	src.m_left	 = 10.0f	 + AniData[m_ani_frame] * 64;
+	src.m_right	 = 230.0f	 + AniData[m_ani_frame] * 64;
+	src.m_bottom = src.m_top + 220.0f;
 
 	//表示位置の設定 
 	dst.m_top	 = 0.0f + m_py;
@@ -117,6 +116,5 @@ void CObjEnemy::Draw()
 	dst.m_bottom = 64.0f + m_py;
 
 	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(3, &src, &dst, c, 0.0f);
 }
-*/
