@@ -65,7 +65,7 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 
 	//飛ぶ敵オブジェクト
-	FringEnemy* obj_fring_enemy = new FringEnemy(300, 300);
+	FringEnemy* obj_fring_enemy = new FringEnemy(300, 700);
 	Objs::InsertObj(obj_fring_enemy, OBJ_FRING_ENEMY, 15);
 
 	/*//Test用 敵オブジェクト作成
