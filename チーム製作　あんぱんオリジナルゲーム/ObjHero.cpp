@@ -2,6 +2,7 @@
 #include "GameL\DrawTexture.h"
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
+#include "GameL\HitBoxManager.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
@@ -9,7 +10,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-//初期化
+//イニシャライズ
 void CObjHero::Init()
 {
 	m_px = 70.0f;
@@ -28,6 +29,10 @@ void CObjHero::Init()
 	m_hit_right = false;
 
 	m_block_type = 0;    //踏んでいるblock確認用
+
+	//当たり判定用HitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 60, 67, ELEMENT_PLAYER, OBJ_HERO, 1);
+
 }
 
 void CObjHero::Action()
@@ -98,6 +103,11 @@ void CObjHero::Action()
 	//更新の位置
 	m_px += m_vx;
 	m_py += m_vy;
+
+	//HitBoxの内容を更新
+	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
+	hit->SetPos(m_px, m_py);					//入り口から新しい位置（主人公機の位置)情報に置き換える
+
 }
 
 void CObjHero::Draw()
