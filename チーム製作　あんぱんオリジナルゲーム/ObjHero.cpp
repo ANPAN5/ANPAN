@@ -44,7 +44,9 @@ void CObjHero::Action()
 	//Zキー入力で弾丸(トゲ)発射
 	if (Input::GetVKey('Z') == true)
 	{
-		
+		//弾丸オブジェ作成
+		CObjBullet* obj_b = new CObjBullet(m_x,m_y);
+		Objs::InsertObj(obj_b, OBJ_BULLET, 100);
 	}
 
 	//キーの入力方向
