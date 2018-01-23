@@ -26,6 +26,8 @@ void CObjHero::Init()
 	m_hit_down  = false;
 	m_hit_left  = false;
 	m_hit_right = false;
+
+	m_block_type = 0;    //踏んでいるblock確認用
 }
 
 void CObjHero::Action()
@@ -39,6 +41,12 @@ void CObjHero::Action()
 		}
 	}
 
+	//Zキー入力で弾丸(トゲ)発射
+	if (Input::GetVKey('Z') == true)
+	{
+		
+	}
+
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
@@ -47,9 +55,9 @@ void CObjHero::Action()
 		m_ani_time += 1;
 	}
 
-
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
+
 		m_vx -= 2.0f;
 		m_posture = 0.0f;
 		m_ani_time += 1;
@@ -99,6 +107,7 @@ void CObjHero::Draw()
 	};
 
 	//描画カラー情報
+	
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
