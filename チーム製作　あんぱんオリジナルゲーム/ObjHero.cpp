@@ -6,6 +6,7 @@
 
 #include "GameHead.h"
 #include "ObjHero.h"
+#include "CObjBullet.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -18,6 +19,7 @@ void CObjHero::Init()
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
+	m_f = true;
 
 	m_ani_time = 0;
 	m_ani_frame = 1;		//静止フレームを初期にする
@@ -49,9 +51,19 @@ void CObjHero::Action()
 	//Zキー入力で弾丸(トゲ)発射
 	if (Input::GetVKey('Z') == true)
 	{
-		//弾丸オブジェ作成
-		CObjBullet* obj_b = new CObjBullet(m_x,m_y);
-		Objs::InsertObj(obj_b, OBJ_BULLET, 100);
+		if (m_f == true)
+		 {
+			//弾丸オブジェ作成
+			CObjBullet* obj_b = new CObjBullet(m_px, m_py+60.0f);
+			Objs::InsertObj(obj_b, OBJ_BULLET, 100);
+
+			m_f = false;
+	      }
+	}
+
+	else
+	{
+		m_f = true;
 	}
 
 	//キーの入力方向

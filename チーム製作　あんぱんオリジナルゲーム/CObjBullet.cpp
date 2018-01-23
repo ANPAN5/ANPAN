@@ -4,14 +4,16 @@
 #include "GameHead.h"
 #include "CObjBullet.h"
 
+#include "ObjHero.h"
+
 //使用するネームスペース
 using namespace GameL;
 
 //コンストラクタ
 CObjBullet::CObjBullet(float x, float y)
 {
-	m_x = x;
-	m_y = y;
+	m_px = x;
+	m_py = y;
 }
 
 //イニシャライズ
@@ -42,11 +44,11 @@ void CObjBullet::Draw()
 	src.m_bottom = 50.0f;
 
 	//表示位置
-	dst.m_top    = 30.0f;
-	dst.m_left   = 275.0f;
-	dst.m_right  = 310.0f;
-	dst.m_bottom = 50.0f;
+	dst.m_top    = 0.0f+m_py;
+	dst.m_left   = 10.0f+m_px;
+	dst.m_right  = 30.0f+m_px;
+	dst.m_bottom = 30.0f+m_py;
 
 	//0番目に登録したグラフィックをsrc.dst.cの情報を元に描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(0, &src, &dst, c, -90.0f);
 }
