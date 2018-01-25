@@ -12,8 +12,8 @@ using namespace GameL;
 //初期化
 void CObjHero::Init()
 {
-	m_px = 70.0f;
 	m_py = 0.0f;
+	m_px = 70.0f;
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
@@ -26,6 +26,9 @@ void CObjHero::Init()
 	m_hit_down  = false;
 	m_hit_left  = false;
 	m_hit_right = false;
+
+	//当たり判定用のHitBoxを作成
+	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
 }
 
 void CObjHero::Action()
@@ -84,6 +87,10 @@ void CObjHero::Action()
 	
 
 	m_vy += 8.5 / (16.0f);
+
+	//自身のHitBoxを持ってくる
+	//CHitBox* hit = Hits::GetHitBox(this);
+	//hit->SetPos(m_x, m_y);
 
 	//更新の位置
 	m_px += m_vx;
