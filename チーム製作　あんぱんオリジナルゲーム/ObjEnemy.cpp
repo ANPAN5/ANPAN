@@ -80,7 +80,7 @@ void CObjEnemy::Action()
 	m_vx += -(m_vx * 0.098);
 
 	//自由落下運動
-	m_vy += 9.8 / (16.0f);
+	//m_vy += 9.8 / (16.0f);
 
 
 	//位置の更新
@@ -104,9 +104,9 @@ void CObjEnemy::Draw()
 	RECT_F dst; //描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top	 = 20.0f;
-	src.m_left	 = 10.0f	 + AniData[m_ani_frame] * 64;
-	src.m_right	 = 230.0f	 + AniData[m_ani_frame] * 64;
+	src.m_top	 = 0.0f;
+	src.m_left = 10.0f;	// + AniData[m_ani_frame] * 64;
+	src.m_right = 180.0f;	// + AniData[m_ani_frame] * 64;
 	src.m_bottom = src.m_top + 220.0f;
 
 	//表示位置の設定 

@@ -57,7 +57,7 @@ void FringEnemy::Action()
 
 	//HitBox‚Ì“à—e‚ðXV
 	CHitBox* hit = Hits::GetHitBox(this);
-	hit->SetPos(m_x+655, m_y+70);
+	hit->SetPos(m_x+655, m_y+700);
 
 	//‘«‚ÆÚG‚µ‚Ä‚é‚é‚©‚Ç‚¤‚©‚ð’²‚×‚é
 	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
