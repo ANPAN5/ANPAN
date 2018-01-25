@@ -16,9 +16,8 @@ public:
 	void Draw();    //ドロー
 private:
 	float m_px;		//弾丸X方向の位置用変数
-	float m_py;      //弾丸のY方向の位置用変数
-	float m_vx;     //弾丸のX方向の速度用変数
-	float m_vy;		//オブジェクトの移動用ベクトルY
+	float m_py;     //弾丸のY方向の位置用変数
+	float m_vy;		//弾丸のY方向の速度用変数
 
 	int    m_ani;		//着弾アニメーション用
 	int    m_ani_time;	//着弾アニメーション間隔タイム
