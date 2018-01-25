@@ -112,10 +112,6 @@ void CObjHero::Action()
 
 	m_vy += 8.5 / (16.0f);
 
-	//自身のHitBoxを持ってくる
-	//CHitBox* hit = Hits::GetHitBox(this);
-	//hit->SetPos(m_x, m_y);
-
 	//更新の位置
 	m_px += m_vx;
 	m_py += m_vy;
@@ -124,18 +120,13 @@ void CObjHero::Action()
 	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
 	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公機の位置)情報に置き換える
 
-	/*//敵と接触してるかどうか調べる
-	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
-	{
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-	}*/
-
 	//敵と接触したら主人公削除
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 	{
 		this->SetStatus(false);		//自身に削除命令を出す
 		Hits::DeleteHitBox(this);	//主人公が所有するHitBoxを削除する
+
+		Scene::SetScene(new CSceneGameOver());
 	}
 
 }

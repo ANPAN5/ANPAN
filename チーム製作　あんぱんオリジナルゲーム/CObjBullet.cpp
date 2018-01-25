@@ -28,6 +28,14 @@ void CObjBullet::Action()
 {
 	m_py += 5.0f;
 
+	if (m_del==true)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+
+		return;
+	}
+
 	//弾丸が領域外に出たら弾丸削除
 	if (m_py > 900.0f)
 	{
@@ -48,12 +56,12 @@ void CObjBullet::Action()
 	};
 
 	//オブジェクト情報と当たり判定を行い、当たっていれば削除
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		if (hit->CheckObjNameHit(data_base[i]) != nullptr)
 		{
 			m_del = true;			//消滅実行
-			Hits::DeleteHitBox(this);//当たり判定無効
+			hit->SetInvincibility(true);
 		}
 	}
 

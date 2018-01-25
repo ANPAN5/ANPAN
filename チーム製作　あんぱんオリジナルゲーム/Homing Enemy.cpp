@@ -32,7 +32,7 @@ void CObjHomingEnemy::Init()
 	//移動ベクトル
 	UnitVec(&m_vy, &m_vx);
 	//当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_x, m_y, 32, 32, ELEMENT_ENEMY, OBJ_HOMING_ENEMY, 1);
+	Hits::SetHitBox(this, m_px, m_py, 32, 32, ELEMENT_ENEMY, OBJ_HOMING_ENEMY, 2);
 }
 //アクション
 void CObjHomingEnemy::Action()
@@ -88,23 +88,15 @@ void CObjHomingEnemy::Action()
 	m_x += m_vx;
 	m_y += m_vy;
 
-	//誘導弾丸のHitBox更新用ポインター取得
+	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_x, m_y);	//HitBoxの位置を誘導弾丸の位置に更新
+	hit->SetPos(m_x, m_y);//HitBoxの位置を誘導弾丸の位置に更新
 
-	/*誘導弾丸が完全に領域外に出たら誘導弾丸を破棄する
-	bool check = CheckWindow(m_x, m_y, -32.0f, -32.0f, 800.0f, 900.0f);
-	if (check == false)
+	//主人公オブジェクトと接触したら幽霊削除
+	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
-	}*/
-
-	//主人公オブジェクトと接触したら幽霊削除
-	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
-	{
-		m_del = true;
-		hit->SetInvincibility(true);
 	}
 
 }
