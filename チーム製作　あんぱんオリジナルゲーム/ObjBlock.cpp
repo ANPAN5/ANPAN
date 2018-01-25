@@ -87,7 +87,7 @@ void CObjBlock::Action()
 						r = 360.0f - abs(r);
 
 					//len‚ª‚ ‚éˆê’è‚Ì’·‚³‚æ‚è’Z‚¢ê‡”»’è‚É“ü‚é
-					if (len < 75.0f)
+					if (len < 80.0f)
 					{
 
 						//Šp“x‚Åã‰º¶‰E‚ð”»’è
