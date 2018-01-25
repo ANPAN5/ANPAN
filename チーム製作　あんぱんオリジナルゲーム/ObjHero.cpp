@@ -2,14 +2,16 @@
 #include "GameL\DrawTexture.h"
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
+#include "GameL\HitBoxManager.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
+#include "CObjBullet.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-//初期化
+//イニシャライズ
 void CObjHero::Init()
 {
 	m_py = 0.0f;
@@ -17,6 +19,7 @@ void CObjHero::Init()
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
+	m_f = true;
 
 	m_ani_time = 0;
 	m_ani_frame = 1;		//静止フレームを初期にする
@@ -27,8 +30,11 @@ void CObjHero::Init()
 	m_hit_left  = false;
 	m_hit_right = false;
 
-	//当たり判定用のHitBoxを作成
-	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
+	m_block_type = 0;    //踏んでいるblock確認用
+
+	//当たり判定用HitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 60, 67, ELEMENT_PLAYER, OBJ_HERO, 1);
+
 }
 
 void CObjHero::Action()
@@ -42,6 +48,24 @@ void CObjHero::Action()
 		}
 	}
 
+	//Zキー入力で弾丸(トゲ)発射
+	if (Input::GetVKey('Z') == true)
+	{
+		if (m_f == true)
+		 {
+			//弾丸オブジェ作成
+			CObjBullet* obj_b = new CObjBullet(m_px, m_py+60.0f);
+			Objs::InsertObj(obj_b, OBJ_BULLET, 100);
+
+			m_f = false;
+	      }
+	}
+
+	else
+	{
+		m_f = true;
+	}
+
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
@@ -50,9 +74,9 @@ void CObjHero::Action()
 		m_ani_time += 1;
 	}
 
-
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
+
 		m_vx -= 2.0f;
 		m_posture = 0.0f;
 		m_ani_time += 1;
@@ -95,6 +119,25 @@ void CObjHero::Action()
 	//更新の位置
 	m_px += m_vx;
 	m_py += m_vy;
+
+	//HitBoxの内容を更新
+	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
+	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公機の位置)情報に置き換える
+
+	/*//敵と接触してるかどうか調べる
+	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}*/
+
+	//敵と接触したら主人公削除
+	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
+	{
+		this->SetStatus(false);		//自身に削除命令を出す
+		Hits::DeleteHitBox(this);	//主人公が所有するHitBoxを削除する
+	}
+
 }
 
 void CObjHero::Draw()
@@ -106,6 +149,7 @@ void CObjHero::Draw()
 	};
 
 	//描画カラー情報
+	
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	RECT_F src;//描画元切り取り位置

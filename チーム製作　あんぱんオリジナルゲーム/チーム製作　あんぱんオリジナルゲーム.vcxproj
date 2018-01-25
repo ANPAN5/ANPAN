@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Attak Enemy.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="CObjBullet.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Enemy Bullet .cpp" />
     <ClCompile Include="ObjEnemy.cpp" />
@@ -43,15 +43,17 @@
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="Homing Enemy.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="UtilityModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attak Enemy.h" />
     <ClInclude Include="ObjBlock.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="CObjBullet.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Enemy Bullet.h" />
     <ClInclude Include="ObjEnemy.h" />
@@ -74,10 +76,12 @@
     <ClInclude Include="Homing Enemy.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="ObjTime.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="UtilityModule.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameL\Draw2DTex.hlsl" />

@@ -51,6 +51,9 @@ void CObjBlock::Action()
 	hero->SetLeft(false);
 	hero->SetRight(false);
 
+	//踏んでいるブロックの種類の初期化
+	hero->SetBT(0);
+
 	//m_mapの全要素にアクセス
 	for (int i = 0; i < 200; i++)
 	{
@@ -84,7 +87,7 @@ void CObjBlock::Action()
 						r = 360.0f - abs(r);
 
 					//lenがある一定の長さより短い場合判定に入る
-					if (len < 75.0f)
+					if (len < 80.0f)
 					{
 
 						//角度で上下左右を判定
@@ -100,6 +103,7 @@ void CObjBlock::Action()
 							//上
 							hero->SetDown(true);	//主人公の下の部分が衝突している
 							hero->SetY(y - 64.0f+(-m_scroll));  //ブロックの位置-主人公の幅
+							hero->SetBT(m_map[i][j]);//ブロックの要素(type)を主人公に渡す
 							hero->SetVY(0.0f);
 						}
 						if (r > 135 && r < 225)
@@ -173,8 +177,8 @@ void CObjBlock::Draw()
 		}
 	}
 }
-
-/*//BlockDrawMethod関数
+/*
+//BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
 //引数1　float   x  :リソース切り取り位置Y
 //引数3　RECT_F* dst:描画位置
