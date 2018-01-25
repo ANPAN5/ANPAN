@@ -92,14 +92,15 @@ void CObjHomingEnemy::Action()
 	CHitBox*hit = Hits::GetHitBox(this);
 	hit->SetPos(m_x, m_y);	//HitBox‚ÌˆÊ’u‚ð—U“±’eŠÛ‚ÌˆÊ’u‚ÉXV
 
-							//—U“±’eŠÛ‚ªŠ®‘S‚É—ÌˆæŠO‚Éo‚½‚ç—U“±’eŠÛ‚ð”jŠü‚·‚é
-	bool check = CheckWindow(m_x, m_y, -32.0f, -32.0f, 800.0f, 600.0f);
+	/*—U“±’eŠÛ‚ªŠ®‘S‚É—ÌˆæŠO‚Éo‚½‚ç—U“±’eŠÛ‚ð”jŠü‚·‚é
+	bool check = CheckWindow(m_x, m_y, -32.0f, -32.0f, 800.0f, 900.0f);
 	if (check == false)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
-	}
-	//ŽålŒö‹@ƒIƒuƒWƒFƒNƒg‚ÆÚG‚µ‚½‚ç—U“±’eŠÛíœ
+	}*/
+
+	//ŽålŒöƒIƒuƒWƒFƒNƒg‚ÆÚG‚µ‚½‚ç—H—ìíœ
 	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
 	{
 		m_del = true;

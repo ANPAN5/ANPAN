@@ -68,7 +68,7 @@ struct UserData
 #include "ObjEnding.h"
 #include "ObjGameOver.h"
 #include "CObjBullet.h"
-#include"Homing Enemy.h"
+#include "Homing Enemy.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
