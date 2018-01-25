@@ -14,8 +14,8 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_px = 70.0f;
 	m_py = 0.0f;
+	m_px = 70.0f;
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
@@ -111,6 +111,10 @@ void CObjHero::Action()
 	
 
 	m_vy += 8.5 / (16.0f);
+
+	//自身のHitBoxを持ってくる
+	//CHitBox* hit = Hits::GetHitBox(this);
+	//hit->SetPos(m_x, m_y);
 
 	//更新の位置
 	m_px += m_vx;
