@@ -32,6 +32,9 @@ void FringEnemy::Action()
 	m_vx = -1.0f;
 	m_vy = 0.0f;
 
+	//スクロールの影響
+	float scroll = scroll_on ? m_scroll; 0;
+
 	//ベクトルの長さを求める
 	float r = 0.0f;
 	r = m_vx*m_vx + m_vy*m_vy;
