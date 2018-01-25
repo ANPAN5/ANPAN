@@ -18,12 +18,56 @@ CObjBullet::CObjBullet(float x, float y)
 void CObjBullet::Init()
 {
 	
+	//当たり判定用HitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 36, 25, ELEMENT_PLAYER, OBJ_BULLET, 1);
+
 }
 
 //アクション
 void CObjBullet::Action()
 {
 	m_py += 5.0f;
+
+	if (m_del==true)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+
+		return;
+	}
+
+	//弾丸が領域外に出たら弾丸削除
+	if (m_py > 900.0f)
+	{
+		this->SetStatus(false);
+	}
+
+	//弾丸のHitBox更新用ポインター取得
+	CHitBox* hit = Hits::GetHitBox(this);
+	hit->SetPos(m_px+10, m_py);				//HitBoxの位置を弾丸の位置に更新
+
+
+	//当たり判定を行うオブジェクト情報
+	int data_base[3] =
+	{
+		OBJ_ENEMY,
+		OBJ_HOMING_ENEMY,
+        OBJ_FRING_ENEMY,
+	};
+
+	//オブジェクト情報と当たり判定を行い、当たっていれば削除
+	for (int i = 0; i < 3; i++)
+	{
+		if (hit->CheckObjNameHit(data_base[i]) != nullptr)
+		{
+			m_del = true;			//消滅実行
+			hit->SetInvincibility(true);
+		}
+	}
+
+	return;//消滅処理は、ここでアクションメソッドを終了させる
+
+
 }
 
 //ドロー

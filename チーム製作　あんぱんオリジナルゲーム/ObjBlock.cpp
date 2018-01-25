@@ -177,6 +177,7 @@ void CObjBlock::Draw()
 		}
 	}
 }
+
 /*
 //BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
@@ -194,5 +195,26 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[])
 	src.m_bottom = src.m_top + 64.0f;
 	//描画
 	Draw::Draw(0, &src, dst, c, 0.0f);
-
-}*/
+}
+//BlockDrawMethod関数
+//引数1 float x			:リソース切り取り位置Ｘ
+//引数2 float y			:リソース切り取り位置Ｙ
+//引数3 bool scroll_on	:判定を行うobjectはスクロールの影響を与えるかどうか(true=与える、false=与えない)
+//引数4 bool* up		:上下左右判定の上部分に当たっているかどうかを返す
+//引数5 bool* down		:上下左右判定の下部分に当たっているかどうかを返す
+//引数6 bool* left		:上下左右判定の左部分に当たっているかどうかを返す
+//引数7 bool* right     :上下左右判定の右部分に当たっているかどうかを返す
+//引数8 float* vx		:左右判定時の反発による移動方向・力の値を変えて返す
+//引数9 float* vy		:上下判定時による自由落下速度運動の移動方向・力の値を変えて返す
+//引数10 int* bt		:下部分判定時、特殊なブロックのタイプを返す
+//判定を行うobjectとブロック64×64限定で、当たり判定と上下左右判定を行う
+//その結果は引数4～10に返す
+void CObjBlock::BlockHit(
+	float *x, float *y, bool scroll_on,
+	bool*up, bool*down, bool*left, bool*right,
+	float* vx, float* vy, int* bt
+)
+{
+	;
+}
+*/
