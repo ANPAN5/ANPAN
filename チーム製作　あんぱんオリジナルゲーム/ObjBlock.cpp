@@ -45,89 +45,6 @@ void CObjBlock::Action()
 	}
 
 
-	//主人公の衝突状態確認用フラグの初期化
-	hero->SetUp(false);
-	hero->SetDown(false);
-	hero->SetLeft(false);
-	hero->SetRight(false);
-
-	//踏んでいるブロックの種類の初期化
-	hero->SetBT(0);
-
-	//m_mapの全要素にアクセス
-	for (int i = 0; i < 200; i++)
-	{
-		for (int j = 0; j < 13; j++)
-		{
-			if (m_map[i][j] > 0)
-			{
-				//要素番号を座標に変更
-				float x = j*64.0f;
-				float y = i*64.0f;
-
-				//主人公とブロックの当たり判定                                             //↓を-にすると落下速度チャージ
-				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy + (m_scroll) < y + 64.0f))
-				{
-					//上下左右判定
-
-					//vectorの作成
-					float vx = hx - x;
-					float vy = (hy-(-m_scroll)) - y;
-
-					//長さを求める
-					float len = sqrt(vx*vx + vy*vy);
-
-					//角度を求める
-					float r = atan2(vy, vx);
-					r = r*180.0f / 3.14f;
-
-					if (r <= 0.0f)
-						r = abs(r);
-					else
-						r = 360.0f - abs(r);
-
-					//lenがある一定の長さより短い場合判定に入る
-					if (len < 80.0f)
-					{
-
-						//角度で上下左右を判定
-						if ((r < 45 && r>0) || r > 315)
-						{
-							//右
-							hero->SetRight(true);	//主人公の左の部分が衝突している
-							hero->SetX(x + 64.0f);	//ブロックの位置+主人公の幅
-							hero->SetVX(-hero->GetVX()*0.1f);//-VX*反発係数
-						}
-						if (r > 45 && r < 135)
-						{
-							//上
-							hero->SetDown(true);	//主人公の下の部分が衝突している
-							hero->SetY(y - 64.0f+(-m_scroll));  //ブロックの位置-主人公の幅
-							hero->SetBT(m_map[i][j]);//ブロックの要素(type)を主人公に渡す
-							hero->SetVY(0.0f);
-						}
-						if (r > 135 && r < 225)
-						{
-							//左
-							hero->SetLeft(true);	//主人公の右の部分が衝突している
-							hero->SetX(x - 64.0f);	//ブロックの位置-主人公の幅
-							hero->SetVX(-hero->GetVX()*0.1f);//-VX*反発係数
-						}
-						if (r > 225 && r < 315)
-						{
-							//下
-							hero->SetUp(true);	  //主人公の上の部分が衝突している
-							hero->SetY(y + 64.0f+(-m_scroll));//ブロックの位置+主人公の幅
-							if (hero->GetVY() < 0)
-							{
-								hero->SetVY(0.0f);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 }
 //ドロー
 void CObjBlock::Draw()
@@ -177,7 +94,8 @@ void CObjBlock::Draw()
 		}
 	}
 }
-/*
+
+
 //BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
 //引数1　float   x  :リソース切り取り位置Y
@@ -194,5 +112,25 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[])
 	src.m_bottom = src.m_top + 64.0f;
 	//描画
 	Draw::Draw(0, &src, dst, c, 0.0f);
-
-}*/
+}
+//BlockHit関数
+//引数1 float x			:リソース切り取り位置Ｘ
+//引数2 float y			:リソース切り取り位置Ｙ
+//引数3 bool scroll_on	:判定を行うobjectはスクロールの影響を与えるかどうか(true=与える、false=与えない)
+//引数4 bool* up		:上下左右判定の上部分に当たっているかどうかを返す
+//引数5 bool* down		:上下左右判定の下部分に当たっているかどうかを返す
+//引数6 bool* left		:上下左右判定の左部分に当たっているかどうかを返す
+//引数7 bool* right     :上下左右判定の右部分に当たっているかどうかを返す
+//引数8 float* vx		:左右判定時の反発による移動方向・力の値を変えて返す
+//引数9 float* vy		:上下判定時による自由落下速度運動の移動方向・力の値を変えて返す
+//引数10 int* bt		:下部分判定時、特殊なブロックのタイプを返す
+//判定を行うobjectとブロック64×64限定で、当たり判定と上下左右判定を行う
+//その結果は引数4～10に返す
+void CObjBlock::BlockHit(
+	float *x, float *y, bool scroll_on,
+	bool*up, bool*down, bool*left, bool*right,
+	float* vx, float* vy, int* bt
+)
+{
+	;
+}

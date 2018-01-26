@@ -15,6 +15,8 @@ public:
 	void Action();
 	void Draw();
 private:
+	float m_px;
+	float m_py;
 	float m_x;
 	float m_y;
 	float m_vx;

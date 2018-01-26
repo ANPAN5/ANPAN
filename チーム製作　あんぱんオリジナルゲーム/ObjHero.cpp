@@ -14,8 +14,8 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_px = 70.0f;
 	m_py = 0.0f;
+	m_px = 70.0f;
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
@@ -120,18 +120,13 @@ void CObjHero::Action()
 	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
 	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公機の位置)情報に置き換える
 
-	/*//敵と接触してるかどうか調べる
-	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
-	{
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-	}*/
-
 	//敵と接触したら主人公削除
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 	{
 		this->SetStatus(false);		//自身に削除命令を出す
 		Hits::DeleteHitBox(this);	//主人公が所有するHitBoxを削除する
+
+		Scene::SetScene(new CSceneGameOver());
 	}
 
 }
