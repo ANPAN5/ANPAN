@@ -109,6 +109,8 @@ void CObjEnemy::Draw()
 	src.m_right = 180.0f;	// + AniData[m_ani_frame] * 64;
 	src.m_bottom = src.m_top + 220.0f;
 
+	//ブロック情報を持ってくる
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//表示位置の設定 
 	dst.m_top	 = 0.0f + m_py;
 	dst.m_left	 = (		64.0f * m_posture) + m_px;

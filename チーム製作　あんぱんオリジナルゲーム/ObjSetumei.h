@@ -1,15 +1,15 @@
 #pragma once
 //使用するヘッダー
-#include"GameL\SceneObjManager.h"
+#include "GameL\SceneObjManager.h"
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト：タイトル
-class CObjTitle :public CObj
+//オブジェクト：説明
+class CObjSetumei :public CObj
 {
 public:
-	CObjTitle() {};
-	~CObjTitle() {};
+	CObjSetumei() {};
+	~CObjSetumei() {};
 	void Init();
 	void Action();
 	void Draw();
