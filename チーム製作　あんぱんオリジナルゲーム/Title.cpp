@@ -21,7 +21,7 @@ void CObjTitle::Action()
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneMain());
+			Scene::SetScene(new CSceneSetumei());
 			m_key_flag = false;
 		}
 	}

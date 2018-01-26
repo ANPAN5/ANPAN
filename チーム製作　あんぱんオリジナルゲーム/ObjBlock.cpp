@@ -66,13 +66,13 @@ void CObjBlock::Action()
 				float y = i*64.0f;
 
 				//主人公とブロックの当たり判定                                             //↓を-にすると落下速度チャージ
-				if ((hx + 64.0f > x) && (hx < x+64.0f) && (hy + 64.0f >(m_scroll)- y) && (hy + (m_scroll) < y + 64.0f))
+				if ((hx + 64.0f > x) && (hx < x + 64.0f) && (hy + 64.0f >(m_scroll)-y) && (hy + (m_scroll) < y + 64.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
 					float vx = hx - x;
-					float vy = (hy-(-m_scroll)) - y;
+					float vy = (hy - (-m_scroll)) - y;
 
 					//長さを求める
 					float len = sqrt(vx*vx + vy*vy);
@@ -102,7 +102,7 @@ void CObjBlock::Action()
 						{
 							//上
 							hero->SetDown(true);	//主人公の下の部分が衝突している
-							hero->SetY(y - 64.0f+(-m_scroll));  //ブロックの位置-主人公の幅
+							hero->SetY(y - 64.0f + (-m_scroll));  //ブロックの位置-主人公の幅
 							hero->SetBT(m_map[i][j]);//ブロックの要素(type)を主人公に渡す
 							hero->SetVY(0.0f);
 						}
@@ -117,7 +117,7 @@ void CObjBlock::Action()
 						{
 							//下
 							hero->SetUp(true);	  //主人公の上の部分が衝突している
-							hero->SetY(y + 64.0f+(-m_scroll));//ブロックの位置+主人公の幅
+							hero->SetY(y + 64.0f + (-m_scroll));//ブロックの位置+主人公の幅
 							if (hero->GetVY() < 0)
 							{
 								hero->SetVY(0.0f);
@@ -138,7 +138,7 @@ void CObjBlock::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-	//背景表示
+			   //背景表示
 	src.m_top = 256.0f;
 	src.m_left = 0.0f;
 	src.m_right = 180.0f;
@@ -155,7 +155,7 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
-	
+
 
 
 	for (int i = 0; i < 200; i++)
@@ -165,10 +165,10 @@ void CObjBlock::Draw()
 			if (m_map[i][j] > 0)
 			{
 				//表示位置の設定
-				dst.m_top = i*64.0f - m_scroll;	
-				dst.m_left	 = j*64.0f ;
-				dst.m_right  = dst.m_left+70.0;
-				dst.m_bottom = dst.m_top + 70.0 ;
+				dst.m_top = i*64.0f - m_scroll;
+				dst.m_left = j*64.0f;
+				dst.m_right = dst.m_left + 70.0;
+				dst.m_bottom = dst.m_top + 70.0;
 
 
 				//描画
