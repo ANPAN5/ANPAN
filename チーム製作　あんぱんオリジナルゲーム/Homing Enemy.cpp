@@ -92,7 +92,7 @@ void CObjHomingEnemy::Action()
 	CHitBox*hit = Hits::GetHitBox(this);
 	hit->SetPos(m_x, m_y);//HitBoxの位置を誘導弾丸の位置に更新
 
-						  //主人公オブジェクトと接触したら幽霊削除
+	//主人公オブジェクトと接触したら幽霊削除
 	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
 	{
 		this->SetStatus(false);

@@ -14,8 +14,8 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_py = 0.0f;
 	m_px = 70.0f;
+	m_py = 64.0f; //位置
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
@@ -103,20 +103,21 @@ void CObjHero::Action()
 	m_vx += -(m_vx*0.3000);
 
 	//自由落下運動    
+	m_vy += 8.5 / (16.0f);
 
 	/*落下速度制限版　※飛べない、動けない
 	while (m_vy < 10) {
 	m_vy += 8.5 / (16.0f);
 	}*/
 
+	//ブロックとの当たり判定実行
+	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	pb->BlockHit(&m_px, &m_py, true,
+		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+		&m_block_type
+	);
 
-	m_vy += 8.5 / (16.0f);
-
-	//自身のHitBoxを持ってくる
-	//CHitBox* hit = Hits::GetHitBox(this);
-	//hit->SetPos(m_x, m_y);
-
-	//更新の位置
+	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
 
@@ -124,14 +125,14 @@ void CObjHero::Action()
 	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
 	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公機の位置)情報に置き換える
 
-											/*//敵と接触してるかどうか調べる
-											if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
-											{
-											this->SetStatus(false);
-											Hits::DeleteHitBox(this);
-											}*/
+	/*//敵と接触してるかどうか調べる
+	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}*/
 
-											//敵と接触したら主人公削除
+	//敵と接触したら主人公削除
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 	{
 		this->SetStatus(false);		//自身に削除命令を出す
