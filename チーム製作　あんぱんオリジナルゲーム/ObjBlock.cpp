@@ -178,7 +178,7 @@ void CObjBlock::Draw()
 	}
 }
 
-/*
+
 //BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
 //引数1　float   x  :リソース切り取り位置Y
@@ -217,4 +217,3 @@ void CObjBlock::BlockHit(
 {
 	;
 }
-*/
