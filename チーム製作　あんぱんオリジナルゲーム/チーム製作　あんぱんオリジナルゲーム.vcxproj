@@ -56,6 +56,7 @@
     <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="CObjBullet.h" />
     <ClInclude Include="Ending.h" />
+    <ClInclude Include="ObjClear.h" />
     <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="ObjFring Enemy.h" />
     <ClInclude Include="GameHead.h" />
@@ -78,6 +79,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="ObjSetumei.h" />
     <ClInclude Include="ObjTime.h" />
+    <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="SceneSetumei.h" />

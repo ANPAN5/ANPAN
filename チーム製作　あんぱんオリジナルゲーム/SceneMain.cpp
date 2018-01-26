@@ -62,11 +62,6 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"FringEnemy.png", 1, TEX_SIZE_512);
 	//グラフィック読み込み(追跡敵)
 	Draw::LoadImageW(L"幽霊　普.png", 2, TEX_SIZE_512);
-	//グラフィック読み込み(説明）
-	//Draw::LoadImageW(L"ki-bo-do.png", 4, TEX_SIZE_512);
-
-	//グラフィック読み込み
-	//Draw::LoadImageW(L"タイトル.png", 0, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();

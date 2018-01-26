@@ -158,12 +158,12 @@ void CObjBlock::BlockHit(
 				float scroll = scroll_on ? m_scroll : 0;
 
 				//主人公とブロックの当たり判定
-				if ((*x + 64.0f > bx) && (*x < bx + 64.0f) && (*y +(-scroll)+ 64.0f > by) && (*y+(-scroll) < by + 64.0f))
+				if ((*x + 64.0f > bx) && (*x < bx + 64.0f) && (*y +(scroll)+64.0f > by) && (*y+(scroll) < by + 64.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = *x + bx;
+					float rvx = *x - bx;
 					float rvy = (*y - (-scroll))-by;
 
 					//長さを求める
@@ -187,7 +187,7 @@ void CObjBlock::BlockHit(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 64.0f + (scroll);//ブロックの位置+オブジェクトの幅
+							*x = bx + 64.0f;//ブロックの位置+オブジェクトの幅
 							*vx = -(*vx)*0.1f;//-VX*反発係数
 						}
 						if (r > 45 && r < 135)
@@ -195,7 +195,7 @@ void CObjBlock::BlockHit(
 						{
 							//上
 							*down = true;//オブジェクトの下の部分が衝突している
-							*y = by - 64.0f;//ブロックの位置-オブジェクトの幅
+							*y = by - 64.0f + (-scroll);//ブロックの位置-オブジェクトの幅
 							//種類を渡すのスタートとゴールのみ変更する
 							if (m_map[i][j] >= 2)
 								*bt = m_map[i][j];//ブロックの要素（type)を主人公に渡す
@@ -205,14 +205,14 @@ void CObjBlock::BlockHit(
 						{
 							//左
 							*left = true;//オブジェクトの右の部分が衝突している
-							*x = bx - 64.0f + (scroll);//ブロックの位置-ブロックの幅
+							*x = bx - 64.0f;//ブロックの位置-ブロックの幅
 							*vx = (*vx)*0.1f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)
 						{
 							//下
 							*up = true;//オブジェクトの上の部分が衝突している
-							*y + 64.0f;//ブロックの位置+主人公の幅
+							*y + 64.0f + (-scroll);//ブロックの位置+主人公の幅
 							if (*vy < 0)
 							{
 								*vy = 0.0f;
@@ -225,4 +225,3 @@ void CObjBlock::BlockHit(
 	}
 	;
 }
-*/
