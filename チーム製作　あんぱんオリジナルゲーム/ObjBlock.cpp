@@ -96,7 +96,7 @@ void CObjBlock::Draw()
 	}
 }
 
-//BlockDrawMethod関数
+///BlockDrawMethod関数
 //引数1　float   x  :リソース切り取り位置X
 //引数1　float   x  :リソース切り取り位置Y
 //引数3　RECT_F* dst:描画位置
@@ -158,13 +158,13 @@ void CObjBlock::BlockHit(
 				float scroll = scroll_on ? m_scroll : 0;
 
 				//主人公とブロックの当たり判定
-				if ((*x + (-scroll) + 64.0f > bx) && (*x + (-scroll) < bx + 64.0f) && (*y + 64.0f > by) && (*y < by + 64.0f))
+				if ((*x + 64.0f > bx) && (*x < bx + 64.0f) && (*y +(-scroll)+ 64.0f > by) && (*y+(-scroll) < by + 64.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scroll)) - bx;
-					float rvy = *y - by;
+					float rvx = *x + bx;
+					float rvy = (*y - (-scroll))-by;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy*rvy);
