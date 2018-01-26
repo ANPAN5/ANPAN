@@ -22,7 +22,7 @@ void CObjSetumei::Action()
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneSetumei());
+			Scene::SetScene(new CSceneMain());
 			m_key_flag = false;
 		}
 	}

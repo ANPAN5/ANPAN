@@ -19,11 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Attak Enemy.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
     <ClCompile Include="CObjBullet.cpp" />
     <ClCompile Include="Ending.cpp" />
-    <ClCompile Include="Enemy Bullet .cpp" />
     <ClCompile Include="ObjEnemy.cpp" />
     <ClCompile Include="ObjFring Enemy.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
@@ -53,11 +51,9 @@
     <ClCompile Include="UtilityModule.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Attak Enemy.h" />
     <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="CObjBullet.h" />
     <ClInclude Include="Ending.h" />
-    <ClInclude Include="Enemy Bullet.h" />
     <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="ObjFring Enemy.h" />
     <ClInclude Include="GameHead.h" />
