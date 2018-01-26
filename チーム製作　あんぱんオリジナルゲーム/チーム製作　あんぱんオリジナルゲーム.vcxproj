@@ -21,11 +21,11 @@
   <ItemGroup>
     <ClCompile Include="Attak Enemy.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="CObjBullet.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Enemy Bullet .cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Fring Enemy.cpp" />
+    <ClCompile Include="ObjEnemy.cpp" />
+    <ClCompile Include="ObjFring Enemy.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
     <ClCompile Include="GameL\DrawFont.cpp" />
@@ -38,20 +38,26 @@
     <ClCompile Include="GameL\SetWindow.cpp" />
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
+    <ClCompile Include="ObjEnding.cpp" />
+    <ClCompile Include="ObjGameOver.cpp" />
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="Homing Enemy.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ObjTime.cpp" />
+    <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneMain.cpp" />
+    <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="UtilityModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attak Enemy.h" />
     <ClInclude Include="ObjBlock.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="CObjBullet.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Enemy Bullet.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Fring Enemy.h" />
+    <ClInclude Include="ObjEnemy.h" />
+    <ClInclude Include="ObjFring Enemy.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />
     <ClInclude Include="GameL\DirectXDevice.h" />
@@ -64,12 +70,18 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
+    <ClInclude Include="ObjEnding.h" />
+    <ClInclude Include="ObjGameOver.h" />
     <ClInclude Include="ObjHero.h" />
     <ClInclude Include="Homing Enemy.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="ObjTime.h" />
+    <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="UtilityModule.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameL\Draw2DTex.hlsl" />

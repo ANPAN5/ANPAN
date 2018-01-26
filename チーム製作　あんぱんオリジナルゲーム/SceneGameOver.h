@@ -5,12 +5,12 @@
 //使用するネームスペース
 using namespace GameL;
 
-//シーン：クリア
-class Ending :public CScene
+//シーン：ゲームオーバー
+class CSceneGameOver :public CScene
 {
 public:
-	Ending();
-	~Ending();
+	CSceneGameOver();
+	~CSceneGameOver();
 	void InitScene();
 	void Scene();
 private:

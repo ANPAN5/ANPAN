@@ -1,16 +1,16 @@
 #pragma once
-//使用するヘッダーファイル
+//使用するへッダーファイル
 #include"GameL\SceneManager.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-//シーン：クリア
-class Ending :public CScene
+//シーン：ゲームタイトル
+class CSceneTitle :public CScene
 {
 public:
-	Ending();
-	~Ending();
+	CSceneTitle();
+	~CSceneTitle();
 	void InitScene();
 	void Scene();
 private:

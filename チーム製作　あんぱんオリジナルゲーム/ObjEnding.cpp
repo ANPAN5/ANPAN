@@ -2,26 +2,28 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
+
 #include"GameHead.h"
-#include"Title.h"
+#include"ObjEnding.h"
 
 //使用するネームスペース
 using namespace GameL;
 
 //イニシャライズ
-void CObjTitle::Init()
+void CObjEnding::Init()
 {
 	m_key_flag = false;
 }
+
 //アクション
-void CObjTitle::Action()
+void CObjEnding::Action()
 {
-	//エンターキーを押してシーン：ゲームメインに移行する
+	//エンターキーを押してシーン：タイトルに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneMain());
+			Scene::SetScene(new CSceneTitle());
 			m_key_flag = false;
 		}
 	}
@@ -31,12 +33,10 @@ void CObjTitle::Action()
 	}
 }
 //ドロー
-void CObjTitle::Draw()
+void CObjEnding::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	Font::StrDraw(L"Rock Down", 140, 300, 125, c);
 
-	Font::StrDraw(L"GameStart : Please EnterKey", 120, 600, 40, c);
-
-	Font::StrDraw(L"GameEnd : Please EscKey", 157, 650, 40, c);
+	Font::StrDraw(L"You did it!", 140, 300, 125, c);
+	Font::StrDraw(L"GameClear", 120, 600, 40, c);
 }

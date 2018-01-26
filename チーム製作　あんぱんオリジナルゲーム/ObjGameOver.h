@@ -4,12 +4,12 @@
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト：タイトル
-class CObjTitle :public CObj
+//オブジェクト：ゲームオーバー
+class CObjGameOver :public CObj
 {
 public:
-	CObjTitle() {};
-	~CObjTitle() {};
+	CObjGameOver() {};
+	~CObjGameOver() {};
 	void Init();
 	void Action();
 	void Draw();
