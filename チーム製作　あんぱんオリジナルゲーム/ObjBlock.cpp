@@ -56,7 +56,7 @@ void CObjBlock::Draw()
 	RECT_F src;//ï`âÊå≥êÿÇËéÊÇËà íu
 	RECT_F dst;//ï`âÊêÊï\é¶à íu
 
-	//îwåiï\é¶
+			   //îwåiï\é¶
 	src.m_top = 256.0f;
 	src.m_left = 0.0f;
 	src.m_right = 180.0f;
@@ -73,7 +73,7 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
-	
+
 
 
 	for (int i = 0; i < 200; i++)
@@ -83,10 +83,10 @@ void CObjBlock::Draw()
 			if (m_map[i][j] > 0)
 			{
 				//ï\é¶à íuÇÃê›íË
-				dst.m_top = i*64.0f - m_scroll;	
-				dst.m_left	 = j*64.0f ;
-				dst.m_right  = dst.m_left+70.0;
-				dst.m_bottom = dst.m_top + 70.0 ;
+				dst.m_top = i*64.0f - m_scroll;
+				dst.m_left = j*64.0f;
+				dst.m_right = dst.m_left + 70.0;
+				dst.m_bottom = dst.m_top + 70.0;
 
 
 				//ï`âÊ

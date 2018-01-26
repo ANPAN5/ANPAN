@@ -87,10 +87,6 @@ void CSceneMain::InitScene()
 	CObjHomingEnemy* obj_homing_enemy = new CObjHomingEnemy(300,300);
 	Objs::InsertObj(obj_homing_enemy,OBJ_HOMING_ENEMY,15);
 
-	//説明オブジェクト作成
-	//CObjSetumei* objs = new CObjSetumei();
-	//Objs::InsertObj(objs, OBJ_SETUMEI, 100);
-
 }
 
 //実行中メソッド

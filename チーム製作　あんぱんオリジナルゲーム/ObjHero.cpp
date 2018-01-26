@@ -24,15 +24,15 @@ void CObjHero::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;		//静止フレームを初期にする
 
-	//blockとの衝突状態確認用
-	m_hit_up    = false;
-	m_hit_down  = false;
-	m_hit_left  = false;
+							//blockとの衝突状態確認用
+	m_hit_up = false;
+	m_hit_down = false;
+	m_hit_left = false;
 	m_hit_right = false;
 
 	m_block_type = 0;    //踏んでいるblock確認用
 
-	//当たり判定用HitBoxを作成
+						 //当たり判定用HitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 60, 67, ELEMENT_PLAYER, OBJ_HERO, 1);
 
 }
@@ -52,13 +52,13 @@ void CObjHero::Action()
 	if (Input::GetVKey('Z') == true)
 	{
 		if (m_f == true)
-		 {
+		{
 			//弾丸オブジェ作成
-			CObjBullet* obj_b = new CObjBullet(m_px, m_py+60.0f);
+			CObjBullet* obj_b = new CObjBullet(m_px, m_py + 60.0f);
 			Objs::InsertObj(obj_b, OBJ_BULLET, 100);
 
 			m_f = false;
-	      }
+		}
 	}
 
 	else
@@ -107,7 +107,7 @@ void CObjHero::Action()
 
 	/*落下速度制限版　※飛べない、動けない
 	while (m_vy < 10) {
-		m_vy += 8.5 / (16.0f);
+	m_vy += 8.5 / (16.0f);
 	}*/
 
 	//ブロックとの当たり判定実行
@@ -124,6 +124,13 @@ void CObjHero::Action()
 	//HitBoxの内容を更新
 	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
 	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公機の位置)情報に置き換える
+
+	/*//敵と接触してるかどうか調べる
+	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}*/
 
 	//敵と接触したら主人公削除
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
@@ -145,23 +152,23 @@ void CObjHero::Draw()
 	};
 
 	//描画カラー情報
-	
+
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-	//切り取り位置の設定
-	src.m_top    = 0.0f;
-	src.m_left   = 0.0f +AniData[m_ani_frame]*56;
-	src.m_right  = 64.0f+AniData[m_ani_frame]*56;
+			   //切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 56;
+	src.m_right = 64.0f + AniData[m_ani_frame] * 56;
 	src.m_bottom = 72.0f;
 
 	//表示位置の設定
-	dst.m_top    = 0.0f +m_py;
-	dst.m_left   = (     64.0f  * m_posture) + m_px;
-	dst.m_right  = (64 - 64.0f  * m_posture) + m_px;
-	dst.m_bottom = 72.0f+m_py;
+	dst.m_top = 0.0f + m_py;
+	dst.m_left = (64.0f  * m_posture) + m_px;
+	dst.m_right = (64 - 64.0f  * m_posture) + m_px;
+	dst.m_bottom = 72.0f + m_py;
 
 	//描画
 	Draw::Draw(0, &src, &dst, c, 0.0f);
