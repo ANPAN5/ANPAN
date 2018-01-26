@@ -225,3 +225,4 @@ void CObjBlock::BlockHit(
 	}
 	;
 }
+*/
