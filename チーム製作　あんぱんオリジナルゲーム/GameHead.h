@@ -16,6 +16,7 @@ enum OBJ_NAME
 	OBJ_FRING_ENEMY,
 	OBJ_BULLET,
 	OBJ_HOMING_ENEMY,
+	OBJ_SETUMEI,
 };
 //------------------------------------------------
 
@@ -68,11 +69,13 @@ struct UserData
 #include "ObjEnding.h"
 #include "ObjGameOver.h"
 #include "CObjBullet.h"
-#include "Homing Enemy.h"
+#include"Homing Enemy.h"
+#include "ObjSetumei.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
+#include "SceneSetumei.h"
 #include"SceneTitle.h"
 #include"Ending.h"
 #include "SceneGameOver.h"
@@ -80,5 +83,5 @@ struct UserData
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneTitle  
+#define SET_GAME_START CSceneTitle 
 //-----------------------------------------------

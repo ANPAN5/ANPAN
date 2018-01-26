@@ -28,7 +28,7 @@ void CObjBullet::Action()
 {
 	m_py += 5.0f;
 
-	if (m_del == true)
+	if (m_del==true)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
