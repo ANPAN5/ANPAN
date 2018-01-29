@@ -33,4 +33,7 @@ private:
 	bool m_hit_left;
 	bool m_hit_right;
 
+	//ˆÚ“®‚ÌŒü‚«§Œä—p
+	bool m_move;
+
 };

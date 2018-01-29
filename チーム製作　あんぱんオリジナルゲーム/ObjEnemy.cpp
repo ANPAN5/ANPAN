@@ -25,7 +25,9 @@ void CObjEnemy::Init()
 	m_speed_power = 0.5f;	//通常速度
 	m_ani_max_time = 4;		//アニメーション間隔幅
 
-							//blockとの衝突状態確認用
+	m_move = false;			//true=右　false=左
+
+	//blockとの衝突状態確認用
 	m_hit_up = false;
 	m_hit_down = false;
 	m_hit_left = false;
@@ -80,7 +82,16 @@ void CObjEnemy::Action()
 	m_vx += -(m_vx * 0.098);
 
 	//自由落下運動
-	//m_vy += 9.8 / (16.0f);
+	m_vy += 9.8 / (16.0f);
+
+	//ブロックタイプ検知用の変数がないためのダミー
+	int d;
+	//ブロックとの当たり判定実行
+	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	pb->BlockHit(&m_px, &m_py, false,
+		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+		&d
+	);
 
 
 	//位置の更新
@@ -103,7 +114,7 @@ void CObjEnemy::Draw()
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画先表示位置
 
-				//切り取り位置の設定
+	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 10.0f;	// + AniData[m_ani_frame] * 64;
 	src.m_right = 180.0f;	// + AniData[m_ani_frame] * 64;
