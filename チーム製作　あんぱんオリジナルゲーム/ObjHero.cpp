@@ -39,6 +39,13 @@ void CObjHero::Init()
 
 void CObjHero::Action()
 {
+	//移動
+	m_vx += -(m_vx*0.3000);
+
+	//自由落下運動    
+	m_vy += 8.5 / (16.0f);
+
+
 	//Xキー入力でジャンプ
 	if (Input::GetVKey('X') == true)
 	{
@@ -49,7 +56,7 @@ void CObjHero::Action()
 	}
 
 	//Zキー入力で弾丸(トゲ)発射
-	if (Input::GetVKey('Z') == true)
+	else if (Input::GetVKey('Z') == true)
 	{
 		if (m_f == true)
 		{
@@ -60,6 +67,14 @@ void CObjHero::Action()
 			m_f = false;
 		}
 	}
+	//ホバリング
+	else if (Input::GetVKey('C') == true)
+	{
+		if (m_vy < 15 && m_vy>=0) {
+			m_vy *= 15.3 / (16.0f);
+		}
+	}
+
 
 	else
 	{
@@ -99,17 +114,7 @@ void CObjHero::Action()
 		m_ani_frame = 0;
 	}
 
-	//移動
-	m_vx += -(m_vx*0.3000);
-
-	//自由落下運動    
-	m_vy += 8.5 / (16.0f);
-
-	/*落下速度制限版　※飛べない、動けない
-	while (m_vy < 10) {
-	m_vy += 8.5 / (16.0f);
-	}*/
-
+	//落下速度制限版　※飛べない、動けない
 	//ブロックとの当たり判定実行
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	pb->BlockHit(&m_px, &m_py, true,
