@@ -4,6 +4,7 @@
 
 #include "GameHead.h"
 #include "ObjFring Enemy.h"
+#include "UtilityModule.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -35,24 +36,12 @@ void FringEnemy::Action()
 	//スクロールの影響
 //	float scroll = scroll_on ? m_scroll; 0;
 
-	//ベクトルの長さを求める
-	float r = 0.0f;
-	r = m_vx*m_vx + m_vy*m_vy;
-	r = sqrt(r);
-
-	if (r == 0.0f)
-	{
-		;
-	}
-	else
-	{
-		m_vx = 1.0f / r*m_vx;
-		m_vy = 1.0f / r*m_vy;
-	}
+//移動ベクトルの正規化
+	UnitVec(&m_vy, &m_vx);
 
 	//速度をつける
-	m_vx *= 1.5f;
-	m_vy *= 1.5f;
+	m_vx *= 3.0f;
+	m_vy *= 3.0f;
 
 	//移動ベクトルを座標に加算する
 	m_x= m_vx;
@@ -85,10 +74,10 @@ void FringEnemy::Draw()
 	src.m_right  = 209.0f;
 	src.m_bottom = 107.0f;
 	//表示位置の設定
-	dst.m_top    = 60.0f +m_y;
+	dst.m_top    = 690.0f +m_y;
 	dst.m_left   = 642.0f+m_x;
 	dst.m_right  = 785.0f+m_x;
-	dst.m_bottom = 190.0f+m_y;
+	dst.m_bottom = 820.0f+m_y;
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描画
 	Draw::Draw(1,&src, &dst,c,0.0f);
 }
