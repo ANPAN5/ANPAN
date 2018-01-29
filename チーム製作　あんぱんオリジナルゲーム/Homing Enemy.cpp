@@ -37,6 +37,7 @@ void CObjHomingEnemy::Init()
 //ƒAƒNƒVƒ‡ƒ“
 void CObjHomingEnemy::Action()
 {
+
 	//Resources‚Ì•`‰æ•¨‚ÌRECT
 	m_eff = GetBulletEffec(&m_ani, &m_ani_time, m_del, 4);
 	float ar = 0.0f;
