@@ -17,6 +17,8 @@ void CObjTime::Init()
 
 	m_flag_time = false;
 
+	m_key_flag = false;
+
 }
 //アクション
 void CObjTime::Action()
@@ -29,9 +31,26 @@ void CObjTime::Action()
 	{
 		m_flag_time = true;
 	}
+	//ゴール
 	else if (hero->GetBT() == 4)
 	{
 		m_flag_time = false;
+
+		//ゴールブロックを踏んだ場合エンディングに移行する
+		
+
+			if (m_key_flag == true)
+			{
+				Scene::SetScene(new Ending());
+				m_key_flag = false;
+			}
+		
+		else
+		{
+			m_key_flag = true;
+		}
+
+		
 	}
 
 	//フラグがオンの時、時間を進める

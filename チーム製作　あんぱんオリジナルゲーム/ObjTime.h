@@ -19,4 +19,6 @@ public:
 private:
 	int m_time;//時間
 	bool m_flag_time;//時間計測スタートフラグ
+	bool m_key_flag;
+
 };
