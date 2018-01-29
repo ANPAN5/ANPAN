@@ -40,7 +40,9 @@
     <ClCompile Include="ObjGameOver.cpp" />
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="Homing Enemy.cpp" />
-    <ClCompile Include="ObjSetumei.cpp" />
+    <ClCompile Include="ObjSetumei.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneMain.cpp" />
