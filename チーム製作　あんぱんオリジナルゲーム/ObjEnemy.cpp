@@ -1,97 +1,122 @@
 //使用するヘッダーファイル
 #include"GameL\DrawTexture.h"
-#include "GameL\HitBoxManager.h"
-#include "GameHead.h"
-#include "CObjBullet.h"
+#include"GameL\WinInputs.h"
+#include"GameL\SceneManager.h"
+#include"GameL\HitBoxManager.h"
+
+#include"GameHead.h"
+#include"ObjEnemy.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-//コンストラクタ
-CObjBullet::CObjBullet(float x, float y)
-{
-	m_px = x;
-	m_py = y;
-}
-
 //イニシャライズ
-void CObjBullet::Init()
+void CObjEnemy::Init()
 {
+	m_px = 100.0f;	//位置
+	m_py = 0.0f;
+	m_vx = 0.0f;	//移動ベクトル
+	m_vy = 0.0f;
+	m_posture = 1.0f;  //右向き0.0f 左向き1.0f
 
-	//当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 36, 25, ELEMENT_PLAYER, OBJ_BULLET, 1);
+	m_ani_time = 0;
+	m_ani_frame = 1;	//静止フレームを初期にする
 
+	m_speed_power = 0.5f;	//通常速度
+	m_ani_max_time = 4;		//アニメーション間隔幅
+
+							//blockとの衝突状態確認用
+	m_hit_up = false;
+	m_hit_down = false;
+	m_hit_left = false;
+	m_hit_right = false;
 }
 
 //アクション
-void CObjBullet::Action()
+void CObjEnemy::Action()
 {
-	m_py += 5.0f;
-
-	if (m_del == true)
+	//落下
+	if (m_py > 1000.0f)
 	{
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-
-		return;
+		;
 	}
 
-	//弾丸が領域外に出たら弾丸削除
-	if (m_py > 900.0f)
+	//通常速度
+	m_speed_power = 0.5f;
+	m_ani_max_time = 4;
+
+
+	//方向
+	if (false)
 	{
-		this->SetStatus(false);
+		m_vx += m_speed_power;
+		m_posture = 1.0f;
+		m_ani_time += 1;
+	}
+	else if (false)
+	{
+		m_vx += m_speed_power;
+		m_posture = 0.0f;
+		m_ani_time += 1;
+	}
+	else
+	{
+		m_ani_frame += 1;  //静止フレーム
+		m_ani_time = 0;
 	}
 
-	//弾丸のHitBox更新用ポインター取得
-	CHitBox* hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + 10, m_py);				//HitBoxの位置を弾丸の位置に更新
-
-
-												//当たり判定を行うオブジェクト情報
-	int data_base[3] =
+	if (m_ani_time > m_ani_max_time)
 	{
-		OBJ_ENEMY,
-		OBJ_HOMING_ENEMY,
-		OBJ_FRING_ENEMY,
-	};
-
-	//オブジェクト情報と当たり判定を行い、当たっていれば削除
-	for (int i = 0; i < 3; i++)
-	{
-		if (hit->CheckObjNameHit(data_base[i]) != nullptr)
-		{
-			m_del = true;			//消滅実行
-			hit->SetInvincibility(true);
-		}
+		m_ani_frame += 1;
+		m_ani_time = 0;
 	}
 
-	return;//消滅処理は、ここでアクションメソッドを終了させる
+	if (m_ani_frame == 4)
+	{
+		m_ani_frame = 0;
+	}
 
+	//摩擦
+	m_vx += -(m_vx * 0.098);
+
+	//自由落下運動
+	//m_vy += 9.8 / (16.0f);
+
+
+	//位置の更新
+	m_px += m_vx;
+	m_py += m_vy;
 
 }
 
 //ドロー
-void CObjBullet::Draw()
-
+void CObjEnemy::Draw()
 {
+	int AniData[4] =
+	{
+		1 , 0 , 2 , 0 ,
+	};
+
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	RECT_F src;//描画元切り取り位置
-	RECT_F dst;//描画先表示位置
+	RECT_F src; //描画元切り取り位置
+	RECT_F dst; //描画先表示位置
 
-			   //切り取り位置
-	src.m_top = 30.0f;
-	src.m_left = 280.0f;
-	src.m_right = 380.0f;
-	src.m_bottom = 62.0f;
+				//切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 10.0f;	// + AniData[m_ani_frame] * 64;
+	src.m_right = 180.0f;	// + AniData[m_ani_frame] * 64;
+	src.m_bottom = src.m_top + 220.0f;
 
-	//表示位置
+	//ブロック情報を持ってくる
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	//表示位置の設定 
 	dst.m_top = 0.0f + m_py;
-	dst.m_left = 10.0f + m_px;
-	dst.m_right = 40.0f + m_px;
-	dst.m_bottom = 45.0f + m_py;
+	dst.m_left = (64.0f * m_posture) + m_px;
+	dst.m_right = (64 - 64.0f * m_posture) + m_px;
+	dst.m_bottom = 64.0f + m_py;
 
-	//0番目に登録したグラフィックをsrc.dst.cの情報を元に描画
-	Draw::Draw(0, &src, &dst, c, -90.0f);
+	//描画
+	Draw::Draw(3, &src, &dst, c, 0.0f);
 }
