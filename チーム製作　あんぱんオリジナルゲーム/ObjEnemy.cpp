@@ -32,6 +32,10 @@ void CObjEnemy::Init()
 	m_hit_down = false;
 	m_hit_left = false;
 	m_hit_right = false;
+
+	//HitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 60, 67, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+
 }
 
 //アクション
@@ -47,24 +51,29 @@ void CObjEnemy::Action()
 	m_speed_power = 0.5f;
 	m_ani_max_time = 4;
 
+	//ブロック衝突で向き変更
+	if (m_hit_left == true)
+	{
+		m_move = true;
+	}
+	if (m_hit_right)
+	{
+		m_move = false;
+	}
+
 
 	//方向
-	if (false)
+	if (m_move==false)
 	{
 		m_vx += m_speed_power;
 		m_posture = 1.0f;
 		m_ani_time += 1;
 	}
-	else if (false)
+	else if (m_move==true)
 	{
 		m_vx += m_speed_power;
 		m_posture = 0.0f;
 		m_ani_time += 1;
-	}
-	else
-	{
-		m_ani_frame += 1;  //静止フレーム
-		m_ani_time = 0;
 	}
 
 	if (m_ani_time > m_ani_max_time)
@@ -93,10 +102,23 @@ void CObjEnemy::Action()
 		&d
 	);
 
-
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
+
+	//ブロックの情報を持ってくる
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+	//HitBoxの位置の変更
+	CHitBox* hit = Hits::GetHitBox(this);
+	hit->SetPos(m_px , m_py - block->GetScroll());
+
+	//主人公オブジェクトと接触したら幽霊削除
+	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 
 }
 
@@ -123,10 +145,10 @@ void CObjEnemy::Draw()
 	//ブロック情報を持ってくる
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//表示位置の設定 
-	dst.m_top = 0.0f + m_py;
+	dst.m_top = 0.0f + m_py - block->GetScroll();
 	dst.m_left = (64.0f * m_posture) + m_px;
 	dst.m_right = (64 - 64.0f * m_posture) + m_px;
-	dst.m_bottom = 64.0f + m_py;
+	dst.m_bottom = 64.0f + m_py-block->GetScroll();
 
 	//描画
 	Draw::Draw(3, &src, &dst, c, 0.0f);
