@@ -45,6 +45,7 @@ void CObjBlock::Action()
 	}
 
 
+
 	
 }
 //ドロー
@@ -56,7 +57,7 @@ void CObjBlock::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //背景表示
+	//背景表示
 	src.m_top = 256.0f;
 	src.m_left = 0.0f;
 	src.m_right = 180.0f;
@@ -73,9 +74,7 @@ void CObjBlock::Draw()
 	src.m_right = 264.0f;
 	src.m_bottom = 60.0f;
 
-
-
-
+	//マップチップによるblock設置
 	for (int i = 0; i < 200; i++)
 	{
 		for (int j = 0; j < 13; j++)
@@ -88,9 +87,27 @@ void CObjBlock::Draw()
 				dst.m_right = dst.m_left + 70.0;
 				dst.m_bottom = dst.m_top + 70.0;
 
+				if (m_map[i][j] == 4)
+				{
+					//ゴールブロック
+					src.m_top = 61.0f;
+					src.m_bottom = 90.0f;
+					src.m_left = 230.0f;
+					src.m_right = 263.0f;
+					Draw::Draw(0, &src, &dst, c, 0.0f);
+				}
 
-				//描画
-				Draw::Draw(0, &src, &dst, c, 0.0f);
+				else
+				{
+					//通常ブロック
+					src.m_top = 27.0f;
+					src.m_bottom = 59.0f;
+					src.m_left = 230.0f;
+					src.m_right = 263.0f;
+
+					//描画
+					Draw::Draw(0, &src, &dst, c, 0.0f);
+				}
 			}
 		}
 	}

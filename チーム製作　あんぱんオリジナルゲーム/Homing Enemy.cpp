@@ -37,10 +37,14 @@ void CObjHomingEnemy::Init()
 //アクション
 void CObjHomingEnemy::Action()
 {
+	//移動
+	m_x += m_vx * 1.5f;
+	m_y += m_vy * 1.5f;
 
 	//Resourcesの描画物のRECT
 	m_eff = GetBulletEffec(&m_ani, &m_ani_time, m_del, 4);
 	float ar = 0.0f;
+
 	//主人公機と誘導弾丸で角度を取る
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	if (obj != nullptr)
@@ -79,7 +83,7 @@ void CObjHomingEnemy::Action()
 
 
 		//主人公機と敵機角度があまりにもかけ離れたら
-		if (ar - br > 20)
+		if (ar - br > 50)
 		{
 			//移動方向を主人公機の方向にする
 			m_vx = cos(3.14 / 180 * ar);
@@ -89,9 +93,16 @@ void CObjHomingEnemy::Action()
 	m_x += m_vx;
 	m_y += m_vy;
 
+
+	//ブロックの情報を持ってくる
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_x, m_y);//HitBoxの位置を誘導弾丸の位置に更新
+	hit->SetPos(m_x, m_y - block->GetScroll());//HitBoxの位置を誘導弾丸の位置に更新
+
+
 
 	//主人公オブジェクトと接触したら幽霊削除
 	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
@@ -110,11 +121,14 @@ void CObjHomingEnemy::Draw()
 	float r = 0.0f;
 
 
+	//ブロックの情報を持ってくる
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	
 	//表示位置の設定
-	dst.m_top = 0.0f + m_y;
+	dst.m_top = 0.0f + m_y - block->GetScroll();
 	dst.m_left = 0.0f + m_x;
 	dst.m_right = 32.0f + m_x;
-	dst.m_bottom = 32.0 + m_y;
+	dst.m_bottom = 32.0 + m_y  - block->GetScroll();
 
 	//主人公機と誘導弾丸で角度を取る
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
