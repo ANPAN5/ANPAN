@@ -1,3 +1,4 @@
+/*
 //使用するヘッダー
 #include "GameL\DrawTexture.h"
 #include "GameL\HitBoxManager.h"
@@ -81,4 +82,4 @@ void FringEnemy::Draw()
 	dst.m_bottom = 200.0f+m_y;
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描画
 	Draw::Draw(1,&src, &dst,c,0.0f);
-}
+}*/

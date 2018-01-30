@@ -75,9 +75,11 @@ void CSceneMain::InitScene()
 	CObjTime* objt = new CObjTime();
 	Objs::InsertObj(objt, OBJ_TIME, 11);
 
+	/*
 	//飛ぶ敵オブジェクト
 	FringEnemy* obj_fring_enemy = new FringEnemy(300, 700);
 	Objs::InsertObj(obj_fring_enemy, OBJ_FRING_ENEMY, 15);
+	*/
 
 	///Test用 敵オブジェクト作成
 	CObjEnemy* obje = new CObjEnemy();

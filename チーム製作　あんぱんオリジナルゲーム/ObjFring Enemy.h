@@ -1,3 +1,4 @@
+/*
 #pragma once
 //使用するヘッダー
 #include "GameL\SceneObjManager.h"
@@ -21,3 +22,4 @@ private:
 	float m_r;
 };
 
+*/
