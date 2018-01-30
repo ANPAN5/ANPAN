@@ -79,7 +79,7 @@ void CObjBlock::Draw()
 	{
 		for (int j = 0; j < 13; j++)
 		{
-			if (m_map[i][j] > 0  && m_map[i][j] <5)
+			if (m_map[i][j] > 0)
 			{
 				//表示位置の設定
 				dst.m_top = i*64.0f - m_scroll;
@@ -87,18 +87,26 @@ void CObjBlock::Draw()
 				dst.m_right = dst.m_left + 70.0;
 				dst.m_bottom = dst.m_top + 70.0;
 
-			if (m_map[i][j] == 4)
-			{
-				//ゴールブロック
-				src.m_top    =59.0f;
-				src.m_bottom =90.0f;
-				src.m_left   =230.0f;
-				src.m_right  =263.0f;
-			}
+				if (m_map[i][j] == 4)
+				{
+					//ゴールブロック
+					src.m_top = 61.0f;
+					src.m_bottom = 90.0f;
+					src.m_left = 230.0f;
+					src.m_right = 263.0f;
+					Draw::Draw(0, &src, &dst, c, 0.0f);
+				}
 
+				else
+				{
+					src.m_top = 27.0f;
+					src.m_bottom = 59.0f;
+					src.m_left = 230.0f;
+					src.m_right = 263.0f;
 
-				//描画
-				Draw::Draw(0, &src, &dst, c, 0.0f);
+					//描画
+					Draw::Draw(0, &src, &dst, c, 0.0f);
+				}
 			}
 		}
 	}
