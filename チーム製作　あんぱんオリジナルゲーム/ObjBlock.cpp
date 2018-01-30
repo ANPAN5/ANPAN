@@ -99,6 +99,7 @@ void CObjBlock::Draw()
 
 				else
 				{
+					//’ÊíƒuƒƒbƒN
 					src.m_top = 27.0f;
 					src.m_bottom = 59.0f;
 					src.m_left = 230.0f;
