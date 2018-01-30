@@ -37,8 +37,6 @@ void CObjTime::Action()
 		m_flag_time = false;
 
 		//ゴールブロックを踏んだ場合エンディングに移行する
-		
-
 			if (m_key_flag == true)
 			{
 				Scene::SetScene(new Ending());
