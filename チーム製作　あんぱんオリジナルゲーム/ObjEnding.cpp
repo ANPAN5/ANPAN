@@ -5,6 +5,8 @@
 
 #include"GameHead.h"
 #include"ObjEnding.h"
+#include "ObjTime.h"
+
 
 //使用するネームスペース
 using namespace GameL;
@@ -35,8 +37,16 @@ void CObjEnding::Action()
 //ドロー
 void CObjEnding::Draw()
 {
+	int minute;//分
+	int second;//秒
+
+	CObjTime Time1;
+
+	Time1.Draw();
+
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	Font::StrDraw(L"You did it!", 140, 300, 125, c);
+
 	Font::StrDraw(L"GameClear", 120, 600, 40, c);
 }

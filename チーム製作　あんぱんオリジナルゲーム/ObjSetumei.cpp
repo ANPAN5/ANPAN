@@ -36,11 +36,13 @@ void CObjSetumei::Action()
 void CObjSetumei::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	Font::StrDraw(L"移動　←キー:→キー",100,200,32,c);
+	Font::StrDraw(L"移動　←キー:→キー",100,200,50,c);
 
-	Font::StrDraw(L"ジャンプ  Xキー", 100, 250, 32, c);
+	Font::StrDraw(L"ジャンプ  Xキー", 100, 300, 50, c);
 
-	Font::StrDraw(L"弾丸発射  Zキー", 100, 300, 32, c);
+	Font::StrDraw(L"弾丸発射  Zキー", 100, 400, 50, c);
+
+	Font::StrDraw(L"滑　空	　 Cキー", 100, 500, 50, c);
 
 	Font::StrDraw(L"Enterキーでゲーム開始", 450, 800, 32, c);
 
