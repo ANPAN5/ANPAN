@@ -56,7 +56,7 @@ void CObjEnemy::Action()
 	{
 		m_move = true;
 	}
-	if (m_hit_right)
+	if (m_hit_right == true)
 	{
 		m_move = false;
 	}
@@ -138,8 +138,8 @@ void CObjEnemy::Draw()
 
 	//切り取り位置の設定
 	src.m_top = 0.0f;
-	src.m_left = 10.0f;	// + AniData[m_ani_frame] * 64;
-	src.m_right = 180.0f;	// + AniData[m_ani_frame] * 64;
+	src.m_left = 10.0f + AniData[m_ani_frame] * 64;
+	src.m_right = 180.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = src.m_top + 220.0f;
 
 	//ブロック情報を持ってくる
