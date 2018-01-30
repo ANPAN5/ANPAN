@@ -148,7 +148,7 @@ void CObjEnemy::Draw()
 	dst.m_top = 0.0f + m_py - block->GetScroll();
 	dst.m_left = (64.0f * m_posture) + m_px;
 	dst.m_right = (64 - 64.0f * m_posture) + m_px;
-	dst.m_bottom = 64.0f + m_py-block->GetScroll();
+	dst.m_bottom = 64.0f + m_py - block->GetScroll();
 
 	//•`‰æ
 	Draw::Draw(3, &src, &dst, c, 0.0f);
