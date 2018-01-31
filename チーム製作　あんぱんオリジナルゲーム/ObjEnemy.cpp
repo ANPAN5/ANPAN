@@ -10,11 +10,16 @@
 //使用するネームスペース
 using namespace GameL;
 
+CObjEnemy::CObjEnemy(float x, float y)
+{
+	m_px = x; //位置
+	m_py = y;
+}
+
 //イニシャライズ
 void CObjEnemy::Init()
 {
-	m_px = 100.0f;	//位置
-	m_py = 0.0f;
+	
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f;  //右向き0.0f 左向き1.0f
@@ -48,7 +53,7 @@ void CObjEnemy::Action()
 	}
 
 	//通常速度
-	m_speed_power = 0.5f;
+	m_speed_power = 1.0f;
 	m_ani_max_time = 4;
 
 	//ブロック衝突で向き変更

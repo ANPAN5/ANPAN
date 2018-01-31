@@ -44,7 +44,41 @@ void CObjBlock::Action()
 		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
+	//敵出現ライン
+	//主人公の位置+500を敵出現ラインにする
+	float line = hy + (m_scroll) + 300;
 
+	//敵出現ラインを要素番号化
+	int ey = ((int)line) / 64;
+
+	//敵出現ラインの列を検索
+	for (int i = 0; i<13; i++)
+	{
+
+		//列の中から5を探す
+		if (m_map[ey][i] == 5)
+		{
+			//5があれば、敵を出現
+			CObjEnemy*obje = new CObjEnemy(i*64.0f, ey*64.0f);
+			Objs::InsertObj(obje, OBJ_ENEMY, 10);
+
+			//敵の出現場所の値を0にする
+			m_map[ey][i] = 0;
+
+		}
+
+		//列の中から6を探す
+		if (m_map[ey][i] == 6)
+		{
+			//5があれば、敵を出現
+			CObjHomingEnemy*obje = new CObjHomingEnemy(i*64.0f, ey*64.0f);
+			Objs::InsertObj(obje, OBJ_HOMING_ENEMY, 15);
+
+			//敵の出現場所の値を0にする
+			m_map[ey][i] = 0;
+
+		}
+	}
 
 	
 }
@@ -96,6 +130,12 @@ void CObjBlock::Draw()
 					src.m_right = 263.0f;
 					Draw::Draw(0, &src, &dst, c, 0.0f);
 				}
+
+				else if (m_map[i][j] == 5)
+				{
+				//	; //敵配置用の番号のため何もしない
+				}
+
 
 				else
 				{

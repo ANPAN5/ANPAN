@@ -82,8 +82,8 @@ void CSceneMain::InitScene()
 	*/
 
 	///Test用 敵オブジェクト作成
-	CObjEnemy* obje = new CObjEnemy();
-	Objs::InsertObj(obje,OBJ_ENEMY,10);
+	//CObjEnemy* obje = new CObjEnemy(10,10);
+	//Objs::InsertObj(obje,OBJ_ENEMY,10);
 
 	//幽霊敵オブジェクト作成
 	CObjHomingEnemy* obj_homing_enemy = new CObjHomingEnemy(300,300);
