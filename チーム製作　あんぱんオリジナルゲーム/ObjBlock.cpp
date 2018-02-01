@@ -31,9 +31,9 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//上方スクロールライン
-	if (hy < 200)
+	if (hy < 100)
 	{
-		hero->SetY(200);			//主人公はラインを超えないようにする
+		hero->SetY(100);			//主人公はラインを超えないようにする
 		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
