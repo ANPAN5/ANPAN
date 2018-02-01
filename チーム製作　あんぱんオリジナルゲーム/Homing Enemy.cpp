@@ -145,5 +145,5 @@ void CObjHomingEnemy::Draw()
 	}
 
 	//０番目に登録したグラフィックをsrc.dst.cの情報を元に描画
-	Draw::Draw(2, &m_eff, &dst, c, r);
+	Draw::Draw(2, &m_eff, &dst, c, 1.0f);
 }
