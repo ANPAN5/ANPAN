@@ -32,8 +32,8 @@ void CObjHero::Init()
 
 	m_block_type = 0;    //踏んでいるblock確認用
 
-						 //当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 60, 67, ELEMENT_PLAYER, OBJ_HERO, 1);
+	//当たり判定用HitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 60, 60, ELEMENT_PLAYER, OBJ_HERO, 1);
 
 }
 
