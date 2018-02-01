@@ -26,7 +26,7 @@ void CObjBullet::Init()
 //アクション
 void CObjBullet::Action()
 {
-	m_py += 5.0f;
+	m_py += 10.0f;
 
 	if (m_del==true)
 	{
@@ -36,15 +36,17 @@ void CObjBullet::Action()
 		return;
 	}
 
-	//弾丸が領域外に出たら弾丸削除
-	if (m_py > 900.0f)
-	{
-		this->SetStatus(false);
-	}
 
 	//弾丸のHitBox更新用ポインター取得
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px+10, m_py);				//HitBoxの位置を弾丸の位置に更新
+
+	//弾丸が領域外に出たら弾丸削除
+	if (m_py > 950.0f)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 
 
 	//当たり判定を行うオブジェクト情報
