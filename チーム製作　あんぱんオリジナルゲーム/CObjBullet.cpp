@@ -65,7 +65,7 @@ void CObjBullet::Action()
 		{
 			Audio::Start(4);	//’…’e‰¹
 			Audio::Start(5);	//“GŒ‚”j
-			m_del = true;			//Á–ÅŽÀs
+			m_del = true;		//Á–ÅŽÀs
 			hit->SetInvincibility(true);
 		}
 	}

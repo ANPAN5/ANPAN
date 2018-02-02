@@ -42,7 +42,7 @@ void CSceneGameOver::InitScene()
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster(1.0 - v);
 
-	//おんがくすたーと
+	//音楽すたーと
 	Audio::Start(5);
 
 	//ゲームオーバーオブジェクト作成

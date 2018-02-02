@@ -37,16 +37,12 @@ void CObjEnding::Action()
 //ÉhÉçÅ[
 void CObjEnding::Draw()
 {
-	int minute;//ï™
-	int second;//ïb
-
-	CObjTime Time1;
-
-	Time1.Draw();
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	Font::StrDraw(L"You did it!", 140, 300, 125, c);
 
 	Font::StrDraw(L"GameClear", 120, 600, 40, c);
+
+	Font::StrDraw(L"PleaseEnterKey", 220, 700, 50, c);
 }

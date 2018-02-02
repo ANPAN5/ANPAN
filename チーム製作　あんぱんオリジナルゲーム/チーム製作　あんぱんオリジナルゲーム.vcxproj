@@ -23,7 +23,6 @@
     <ClCompile Include="CObjBullet.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="ObjEnemy.cpp" />
-    <ClCompile Include="ObjFring Enemy.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
     <ClCompile Include="GameL\DrawFont.cpp" />
@@ -56,7 +55,6 @@
     <ClInclude Include="CObjBullet.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="ObjEnemy.h" />
-    <ClInclude Include="ObjFring Enemy.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />
     <ClInclude Include="GameL\DirectXDevice.h" />
@@ -76,7 +74,6 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="ObjSetumei.h" />
     <ClInclude Include="ObjTime.h" />
-    <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="SceneSetumei.h" />

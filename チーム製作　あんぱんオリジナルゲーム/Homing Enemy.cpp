@@ -45,7 +45,7 @@ void CObjHomingEnemy::Action()
 	m_eff = GetBulletEffec(&m_ani, &m_ani_time, m_del, 4);
 	float ar = 0.0f;
 
-	//主人公機と誘導弾丸で角度を取る
+	//主人公と幽霊で角度を取る
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	if (obj != nullptr)
 	{
@@ -58,7 +58,7 @@ void CObjHomingEnemy::Action()
 			ar = 360 - abs(ar);
 		}
 
-		//弾丸の現在の向いている角度を取る
+		//幽霊の現在の向いている角度を取る
 		float br = GetAtan2Angle(m_vx, -m_vy);
 		if (br < 0)
 		{
@@ -82,10 +82,10 @@ void CObjHomingEnemy::Action()
 		UnitVec(&m_vx, &m_vy);
 
 
-		//主人公機と敵機角度があまりにもかけ離れたら
+		//主人公と幽霊の角度があまりにもかけ離れたら
 		if (ar - br > 50)
 		{
-			//移動方向を主人公機の方向にする
+			//移動方向を主人公の方向にする
 			m_vx = cos(3.14 / 180 * ar);
 			m_vy = -sin(3.14 / 180 * ar);
 		}
@@ -100,7 +100,7 @@ void CObjHomingEnemy::Action()
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_x, m_y - block->GetScroll());//HitBoxの位置を誘導弾丸の位置に更新
+	hit->SetPos(m_x, m_y - block->GetScroll());//HitBoxの位置を幽霊の位置に更新
 
 
 
@@ -130,9 +130,9 @@ void CObjHomingEnemy::Draw()
 	dst.m_right = 32.0f + m_x;
 	dst.m_bottom = 32.0 + m_y  - block->GetScroll();
 
-	//主人公機と誘導弾丸で角度を取る
+	//主人公と幽霊で角度を取る
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	//主人公機が存在する場合、誘導角度を計算する
+	//主人公が存在する場合、誘導角度を計算する
 	if (obj != nullptr)
 	{
 		float x = obj->GetX() - m_x;
@@ -144,6 +144,6 @@ void CObjHomingEnemy::Draw()
 		}
 	}
 
-	//０番目に登録したグラフィックをsrc.dst.cの情報を元に描画
+	//2番目に登録したグラフィックをsrc.dst.cの情報を元に描画
 	Draw::Draw(2, &m_eff, &dst, c, 1.0f);
 }

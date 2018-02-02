@@ -118,7 +118,7 @@ void CObjEnemy::Action()
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px , m_py - block->GetScroll());
 
-	//主人公オブジェクトと接触したら幽霊削除
+	//主人公オブジェクトと接触したら敵削除
 	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
 	{
 		this->SetStatus(false);
