@@ -3,6 +3,7 @@
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\HitBoxManager.h"
+#include "GameL\Audio.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
@@ -42,17 +43,30 @@ void CObjHero::Action()
 	//移動
 	m_vx += -(m_vx*0.3000);
 
-	//自由落下運動    
+	//自由落下運動  
 	m_vy += 8.5 / (16.0f);
+	/*
+	do {
+		m_vy += 8.5 / (16.0f);
+	} while (m_vy > 10);
+	*/
 
 
 	//Xキー入力でジャンプ
 	if (Input::GetVKey('X') == true)
 	{
-		if (m_hit_down == true)
-		{
-			m_vy = -18;//元は-16
-		}
+			if (m_hit_down == true)
+			{
+				m_vy = -18;//元は-16
+			}
+
+			if (m_f == true)
+			{
+				//ジャンプ
+				Audio::Start(8);
+				m_f = false;
+			}
+
 	}
 
 	//Zキー入力で弾丸(トゲ)発射
@@ -60,6 +74,9 @@ void CObjHero::Action()
 	{
 		if (m_f == true)
 		{
+			//発射音を鳴らす
+			Audio::Start(3);
+			
 			//弾丸オブジェ作成
 			CObjBullet* obj_b = new CObjBullet(m_px, m_py + 60.0f);
 			Objs::InsertObj(obj_b, OBJ_BULLET, 100);

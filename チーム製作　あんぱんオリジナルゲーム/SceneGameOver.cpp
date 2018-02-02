@@ -5,6 +5,7 @@
 //GameLで使用するヘッダー
 #include"GameL\SceneObjManager.h"
 #include"GameL\DrawFont.h"
+#include "GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -32,6 +33,16 @@ void CSceneGameOver::InitScene()
 	Font::SetStrTex(L"Oh My God");
 	Font::SetStrTex(L"You got missing");
 	Font::SetStrTex(L"GameOver");
+
+	//音楽読み込み
+	Audio::LoadAudio(5, L"ゲームオーバー.wav", BACK_MUSIC);
+
+	//ボリュームを戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster(1.0 - v);
+
+	//おんがくすたーと
+	Audio::Start(5);
 
 	//ゲームオーバーオブジェクト作成
 	CObjGameOver*obj = new CObjGameOver();

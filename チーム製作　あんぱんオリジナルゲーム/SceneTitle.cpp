@@ -29,6 +29,12 @@ void CSceneTitle::InitScene()
 {
 	Font::SetStrTex(L"シューティングゲーム");
 
+	//音楽情報の読み込み
+	Audio::LoadAudio(0, L"タイトル.wav", SOUND_TYPE::BACK_MUSIC);
+	//マスターボリューム
+	float Volume = Audio::VolumeMaster(-0.8f);
+	//音楽スタート
+	Audio::Start(0);	
 	//タイトルオブジェクト作成
 	CObjTitle*obj = new CObjTitle();
 	Objs::InsertObj(obj, OBJ_TITLE, 10);

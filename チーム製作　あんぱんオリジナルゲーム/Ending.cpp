@@ -6,6 +6,7 @@
 #include"GameL\SceneObjManager.h"
 #include"GameL\DrawFont.h"
 #include"GameL\Audio.h"
+#include "GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -31,6 +32,15 @@ void Ending::InitScene()
 {
 	Font::SetStrTex(L"You did it!");
 	Font::SetStrTex(L"Game Clear");
+	//音楽読み込み
+	Audio::LoadAudio(7, L"ゴール.wav", BACK_MUSIC);
+
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster(1.0 - v);
+
+	//音楽スタート
+	Audio::Start(7);
 
 	//クリアオブジェクト作成
 	CObjEnding*obj = new CObjEnding();
