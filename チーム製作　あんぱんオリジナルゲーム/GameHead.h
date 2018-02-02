@@ -13,7 +13,6 @@ enum OBJ_NAME
 	OBJ_ENEMY,
 	OBJ_ENDING,
 	OBJ_GAME_OVER,
-	OBJ_FRING_ENEMY,
 	OBJ_BULLET,
 	OBJ_HOMING_ENEMY,
 	OBJ_SETUMEI,
@@ -64,20 +63,19 @@ struct UserData
 #include "ObjBlock.h"
 #include "ObjTime.h"
 #include "Title.h"
-#include "ObjFring Enemy.h"
 #include "ObjEnemy.h"
 #include "ObjEnding.h"
 #include "ObjGameOver.h"
 #include "CObjBullet.h"
-#include"Homing Enemy.h"
+#include "Homing Enemy.h"
 #include "ObjSetumei.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
 #include "SceneSetumei.h"
-#include"SceneTitle.h"
-#include"Ending.h"
+#include "SceneTitle.h"
+#include "Ending.h"
 #include "SceneGameOver.h"
 //-----------------------------------------------
 

@@ -51,11 +51,10 @@ void CObjBullet::Action()
 
 
 	//当たり判定を行うオブジェクト情報
-	int data_base[3] =
+	int data_base[2] =
 	{
 		OBJ_ENEMY,
 		OBJ_HOMING_ENEMY,
-        OBJ_FRING_ENEMY,
 	};
 
 	//オブジェクト情報と当たり判定を行い、当たっていれば削除
