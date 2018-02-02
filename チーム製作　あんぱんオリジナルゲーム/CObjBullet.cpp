@@ -1,6 +1,7 @@
 //使用するヘッダーファイル
 #include"GameL\DrawTexture.h"
 #include "GameL\HitBoxManager.h"
+#include "GameL\Audio.h"
 #include "GameHead.h"
 #include "CObjBullet.h"
 
@@ -62,6 +63,8 @@ void CObjBullet::Action()
 	{
 		if (hit->CheckObjNameHit(data_base[i]) != nullptr)
 		{
+			Audio::Start(4);	//着弾音
+			Audio::Start(5);	//敵撃破
 			m_del = true;			//消滅実行
 			hit->SetInvincibility(true);
 		}

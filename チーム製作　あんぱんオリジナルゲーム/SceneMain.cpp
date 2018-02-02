@@ -7,6 +7,7 @@
 #include "GameL\DrawTexture.h"
 #include "GameL\DrawFont.h"
 #include "GameL\UserData.h"
+#include"GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -53,6 +54,24 @@ void CSceneMain::InitScene()
 
 		}
 	}
+	//音楽読み込み
+	Audio::LoadAudio(0, L"タイトル.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(1, L"操作説明.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(2, L"ゲーム内.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(3, L"発射音.wav", SOUND_TYPE::EFFECT);
+	Audio::LoadAudio(4, L"着弾音.wav", SOUND_TYPE::EFFECT);
+	Audio::LoadAudio(5, L"敵撃破.wav", SOUND_TYPE::EFFECT);
+	Audio::LoadAudio(6, L"ゲームオーバー.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(7, L"ゴール.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(8, L"ジャンプ.wav", SOUND_TYPE::EFFECT);
+
+
+	//ボリュームを1.0に戻す
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster(1.0 - v);
+
+	//音楽スタート
+	Audio::Start(2);
 
 	//グラフィック読み込み(歩く敵)
 	Draw::LoadImageW(L"Enemy1.png",3, TEX_SIZE_512);
@@ -88,6 +107,7 @@ void CSceneMain::InitScene()
 	//幽霊敵オブジェクト作成
 	//CObjHomingEnemy* obj_homing_enemy = new CObjHomingEnemy(300,300);
 	//Objs::InsertObj(obj_homing_enemy,OBJ_HOMING_ENEMY,15);
+
 
 }
 
