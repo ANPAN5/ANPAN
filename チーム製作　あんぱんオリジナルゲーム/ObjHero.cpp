@@ -69,10 +69,13 @@ void CObjHero::Action()
 	}
 	//ホバリング
 	else if (Input::GetVKey('C') == true)
-	{
-		if (m_vy < 15 && m_vy>=0) {
+	{	
+		//落下速度制御
+		if (m_vy < 15 && m_vy>=0) 
+		{
 			m_vy *= 15.3 / (16.0f);
 		}
+
 	}
 
 
@@ -103,18 +106,20 @@ void CObjHero::Action()
 		m_ani_time = 0;
 	}
 
-	if (m_ani_time > 4)
+	if (m_ani_time > 5)
 	{
 		m_ani_frame += 1;
 		m_ani_time = 0;
 	}
+	if (m_ani_frame == 5)
+	{
 
+	}
 	if (m_ani_frame == 4)
 	{
 		m_ani_frame = 0;
 	}
 
-	//落下速度制限版　※飛べない、動けない
 	//ブロックとの当たり判定実行
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	pb->BlockHit(&m_px, &m_py, true,
@@ -128,14 +133,7 @@ void CObjHero::Action()
 
 	//HitBoxの内容を更新
 	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
-	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公機の位置)情報に置き換える
-
-	/*//敵と接触してるかどうか調べる
-	if (hit->CheckObjNameHit(OBJ_HERO) != nullptr)
-	{
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-	}*/
+	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公の位置)情報に置き換える
 
 	//敵と接触したら主人公削除
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
@@ -151,9 +149,9 @@ void CObjHero::Action()
 void CObjHero::Draw()
 {
 	//歩くアニメーション
-	int AniData[4] =
+	int AniData[5] =
 	{
-		1,0,2,0,
+		1,0,2,0,3
 	};
 
 	//描画カラー情報
