@@ -64,6 +64,7 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(6, L"ゲームオーバー.wav", SOUND_TYPE::BACK_MUSIC);
 	Audio::LoadAudio(7, L"ゴール.wav", SOUND_TYPE::BACK_MUSIC);
 	Audio::LoadAudio(8, L"ジャンプ.wav", SOUND_TYPE::EFFECT);
+	Audio::LoadAudio(9, L"滑空音.wav", SOUND_TYPE::EFFECT);
 
 
 	//ボリュームを1.0に戻す

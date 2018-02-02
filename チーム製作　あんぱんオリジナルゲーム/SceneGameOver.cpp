@@ -33,6 +33,7 @@ void CSceneGameOver::InitScene()
 	Font::SetStrTex(L"Oh My God");
 	Font::SetStrTex(L"You got missing");
 	Font::SetStrTex(L"GameOver");
+	Font::SetStrTex(L"PleaseEnterKey");
 
 	//音楽読み込み
 	Audio::LoadAudio(5, L"ゲームオーバー.wav", BACK_MUSIC);

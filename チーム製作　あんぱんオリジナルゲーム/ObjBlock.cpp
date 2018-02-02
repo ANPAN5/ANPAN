@@ -38,15 +38,15 @@ void CObjBlock::Action()
 	}
 
 	//下方スクロールライン
-	if (hy > 500)
+	if (hy > 250)
 	{
-		hero->SetY(500);			//主人公はラインを超えないようにする
+		hero->SetY(250);			//主人公はラインを超えないようにする
 		m_scroll += hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//敵出現ライン
-	//主人公の位置+500を敵出現ラインにする
-	float line = hy + (m_scroll) + 500;
+	//主人公の位置+700を敵出現ラインにする
+	float line = hy + (m_scroll) + 700;
 
 	//敵出現ラインを要素番号化
 	int ey = ((int)line) / 64;

@@ -92,6 +92,13 @@ void CObjHero::Action()
 		{
 			m_vy *= 15.3 / (16.0f);
 		}
+		if (m_f == true)
+		{
+			//ŠŠ‹ó‰¹
+			Audio::Start(9);
+			m_f = false;
+		}
+
 
 	}
 

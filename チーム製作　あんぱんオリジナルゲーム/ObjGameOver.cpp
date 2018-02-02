@@ -40,4 +40,6 @@ void CObjGameOver::Draw()
 	Font::StrDraw(L"Oh My God",120,250,100,c);
 	Font::StrDraw(L"You got missing",60,400,100,c);
 	Font::StrDraw(L"GameOver",220,600,50,c);
+	Font::StrDraw(L"PleaseEnterKey", 220, 700, 50, c);
+
 }
