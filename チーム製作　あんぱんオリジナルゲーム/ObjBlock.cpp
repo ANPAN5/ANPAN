@@ -118,8 +118,8 @@ void CObjBlock::Draw()
 				//表示位置の設定
 				dst.m_top = i*64.0f - m_scroll;
 				dst.m_left = j*64.0f;
-				dst.m_right = dst.m_left + 70.0;
-				dst.m_bottom = dst.m_top + 70.0;
+				dst.m_right = dst.m_left + 70.0f;
+				dst.m_bottom = dst.m_top + 70.0f;
 
 				if (m_map[i][j] == 4)
 				{
@@ -133,7 +133,7 @@ void CObjBlock::Draw()
 
 				else if (m_map[i][j] == 5)
 				{
-				//	; //敵配置用の番号のため何もしない
+					; //敵配置用の番号のため何もしない
 				}
 
 

@@ -42,7 +42,7 @@ void CObjBullet::Action()
 	hit->SetPos(m_px+10, m_py);				//HitBox‚ÌˆÊ’u‚ð’eŠÛ‚ÌˆÊ’u‚ÉXV
 
 	//’eŠÛ‚ª—ÌˆæŠO‚Éo‚½‚ç’eŠÛíœ
-	if (m_py > 950.0f)
+	if (m_py > 900.0f)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
