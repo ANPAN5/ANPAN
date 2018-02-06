@@ -43,7 +43,7 @@ void CObjBullet::Action()
 	hit->SetPos(m_px+10, m_py);				//HitBoxの位置を弾丸の位置に更新
 
 	//弾丸が領域外に出たら弾丸削除
-	if (m_py > 900.0f)
+	if (m_py > 800.0f)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
@@ -58,7 +58,7 @@ void CObjBullet::Action()
 	};
 
 	//オブジェクト情報と当たり判定を行い、当たっていれば削除
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		if (hit->CheckObjNameHit(data_base[i]) != nullptr)
 		{

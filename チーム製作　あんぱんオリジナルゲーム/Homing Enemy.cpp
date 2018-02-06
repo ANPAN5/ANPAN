@@ -38,58 +38,14 @@ void CObjHomingEnemy::Init()
 void CObjHomingEnemy::Action()
 {
 	//ˆÚ“®
-	m_x += m_vx * 1.5f;
-	m_y += m_vy * 1.5f;
+	m_x +=  0.0;
+	m_y +=  -5.0f;
 
 	//Resources‚Ì•`‰æ•¨‚ÌRECT
 	m_eff = GetBulletEffec(&m_ani, &m_ani_time, m_del, 4);
 	float ar = 0.0f;
 
-	//ŽålŒö‚Æ—H—ì‚ÅŠp“x‚ðŽæ‚é
-	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	if (obj != nullptr)
-	{
-		float x = obj->GetX() - m_x;
-		float y = obj->GetY() - m_y;
-		float ar = GetAtan2Angle(x, -y);
-
-		if (ar< 0)
-		{
-			ar = 360 - abs(ar);
-		}
-
-		//—H—ì‚ÌŒ»Ý‚ÌŒü‚¢‚Ä‚¢‚éŠp“x‚ðŽæ‚é
-		float br = GetAtan2Angle(m_vx, -m_vy);
-		if (br < 0)
-		{
-			br = 360 - abs(br);
-		}
-
-		float r = 3.14 / 180.0f;
-
-		if (ar < br)
-		{
-			//ˆÚ“®•ûŒü‚É+1‹‰Á‚¦‚é
-			m_vx = m_vx*cos(r) - m_vy*sin(r);
-			m_vy = m_vy*cos(r) + m_vx*sin(r);
-		}
-		else
-		{
-			//ˆÚ“®•ûŒü‚É-1‹‰Á‚¦‚é
-			m_vx = m_vx*cos(-r) - m_vy*sin(-r);
-			m_vy = m_vy*cos(-r) + m_vx*sin(-r);
-		}
-		UnitVec(&m_vx, &m_vy);
-
-
-		//ŽålŒö‚Æ—H—ì‚ÌŠp“x‚ª‚ ‚Ü‚è‚É‚à‚©‚¯—£‚ê‚½‚ç
-		if (ar - br > 50)
-		{
-			//ˆÚ“®•ûŒü‚ðŽålŒö‚Ì•ûŒü‚É‚·‚é
-			m_vx = cos(3.14 / 180 * ar);
-			m_vy = -sin(3.14 / 180 * ar);
-		}
-	}
+	
 	m_x += m_vx;
 	m_y += m_vy;
 
@@ -103,8 +59,15 @@ void CObjHomingEnemy::Action()
 	hit->SetPos(m_x, m_y - block->GetScroll());//HitBox‚ÌˆÊ’u‚ð—H—ì‚ÌˆÊ’u‚ÉXV
 
 
+	//’eŠÛ‚ª—ÌˆæŠO‚Éo‚½‚ç’eŠÛíœ
+	if (m_py > 800.0f)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 
-	//ŽålŒöƒIƒuƒWƒFƒNƒg‚ÆÚG‚µ‚½‚ç—H—ìíœ
+
+	//’eŠÛƒIƒuƒWƒFƒNƒg‚ÆÚG‚µ‚½‚ç—H—ìíœ
 	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
 	{
 		this->SetStatus(false);
