@@ -19,6 +19,12 @@ CObjBlock::CObjBlock(int map[200][13])
 //イニシャライズ
 void CObjBlock::Init()
 {
+	void BlockHit(
+		float*x, float*y, bool scroll_on,
+		bool*up, bool*down, bool*left, bool*right,
+		float* vx, float*vy, int*bt
+	);
+
 	m_scroll = 0.0f;
 }
 
@@ -45,8 +51,8 @@ void CObjBlock::Action()
 	}
 
 	//敵出現ライン
-	//主人公の位置+700を敵出現ラインにする
-	float line = hy + (m_scroll) + 700;
+	//主人公の位置+1000を敵出現ラインにする
+	float line = hy + (m_scroll) + 630;
 
 	//敵出現ラインを要素番号化
 	int ey = ((int)line) / 64;

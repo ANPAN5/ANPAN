@@ -15,12 +15,16 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
+	
 	m_px = 70.0f;
 	m_py = 64.0f; //位置
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_posture = 1.0f;	//右0.0f 左1.0f
 	m_f = true;
+	m_x = 0.0f;
+	m_y = 0.0f;
+
 
 	m_ani_time = 0;
 	m_ani_frame = 1;		//静止フレームを初期にする
@@ -38,26 +42,43 @@ void CObjHero::Init()
 
 }
 
+//アクション
 void CObjHero::Action()
 {
 	//移動
 	m_vx += -(m_vx*0.3000);
 
-	//自由落下運動  
-	m_vy += 8.5 / (16.0f);
+	//自由落下運動
+		m_vy += 8.5 / (16.0f);
+	
 	/*
 	do {
 		m_vy += 8.5 / (16.0f);
 	} while (m_vy > 10);
 	*/
 
+	//Zキー入力で弾丸(トゲ)発射
+	if (Input::GetVKey('Z') == true)
+	{
+		if (m_f == true)
+		{
+			//発射音を鳴らす
+			Audio::Start(3);
+
+			//弾丸オブジェ作成
+			CObjBullet* obj_b = new CObjBullet(m_px, m_py + 60.0f);
+			Objs::InsertObj(obj_b, OBJ_BULLET, 100);
+
+			m_f = false;
+		}
+	}
 
 	//Xキー入力でジャンプ
-	if (Input::GetVKey('X') == true)
+	else if (Input::GetVKey('X') == true)
 	{
 			if (m_hit_down == true)
 			{
-				m_vy = -18;//元は-16
+				m_vy = -18;//元は-18
 			}
 
 			if (m_f == true)
@@ -69,21 +90,6 @@ void CObjHero::Action()
 
 	}
 
-	//Zキー入力で弾丸(トゲ)発射
-	else if (Input::GetVKey('Z') == true)
-	{
-		if (m_f == true)
-		{
-			//発射音を鳴らす
-			Audio::Start(3);
-			
-			//弾丸オブジェ作成
-			CObjBullet* obj_b = new CObjBullet(m_px, m_py + 60.0f);
-			Objs::InsertObj(obj_b, OBJ_BULLET, 100);
-
-			m_f = false;
-		}
-	}
 	//ホバリング
 	else if (Input::GetVKey('C') == true)
 	{	
@@ -177,14 +183,14 @@ void CObjHero::Draw()
 
 	//切り取り位置の設定
 	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 56;
-	src.m_right = 64.0f + AniData[m_ani_frame] * 56;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 70;
+	src.m_right = 64.0f + AniData[m_ani_frame] * 70;
 	src.m_bottom = 72.0f;
 
 	//表示位置の設定
 	dst.m_top = 0.0f + m_py;
-	dst.m_left = (50.0f  * m_posture) + m_px;
-	dst.m_right = (60 - 70.0f  * m_posture) + m_px;
+	dst.m_left = (64.0f  * m_posture) + m_px;
+	dst.m_right = (64 - 64  * m_posture) + m_px;
 	dst.m_bottom = 72.0f + m_py;
 
 	//描画

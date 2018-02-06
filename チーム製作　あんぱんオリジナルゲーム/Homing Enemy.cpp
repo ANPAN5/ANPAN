@@ -17,6 +17,8 @@ CObjHomingEnemy::CObjHomingEnemy(float x, float y)
 //イニシャライズ
 void CObjHomingEnemy::Init()
 {
+	m_px = 0.0f;
+	m_py = 0.0f;
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 	m_time = 0;
