@@ -34,7 +34,7 @@ void CObjHero::Init()
 	m_block_type = 0;    //踏んでいるblock確認用
 
 	//当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 60, 60, ELEMENT_PLAYER, OBJ_HERO, 1);
+	Hits::SetHitBox(this, m_px, m_py, 35, 60, ELEMENT_PLAYER, OBJ_HERO, 1);
 
 }
 
@@ -129,16 +129,6 @@ void CObjHero::Action()
 		m_ani_frame = 1;	//キー入力がない場合は静止フレーム
 		m_ani_time = 0;
 	}
-
-	if (m_ani_time > 5)
-	{
-		m_ani_frame += 1;
-		m_ani_time = 0;
-	}
-	if (m_ani_frame == 5)
-	{
-
-	}
 	if (m_ani_frame == 4)
 	{
 		m_ani_frame = 0;
@@ -173,9 +163,9 @@ void CObjHero::Action()
 void CObjHero::Draw()
 {
 	//歩くアニメーション
-	int AniData[5] =
+	int AniData[4] =
 	{
-		1,0,2,0,3
+		1,0,2,0
 	};
 
 	//描画カラー情報
@@ -193,8 +183,8 @@ void CObjHero::Draw()
 
 	//表示位置の設定
 	dst.m_top = 0.0f + m_py;
-	dst.m_left = (64.0f  * m_posture) + m_px;
-	dst.m_right = (64 - 64.0f  * m_posture) + m_px;
+	dst.m_left = (50.0f  * m_posture) + m_px;
+	dst.m_right = (60 - 70.0f  * m_posture) + m_px;
 	dst.m_bottom = 72.0f + m_py;
 
 	//描画
