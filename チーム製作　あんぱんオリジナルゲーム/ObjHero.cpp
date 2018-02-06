@@ -38,7 +38,7 @@ void CObjHero::Init()
 	m_block_type = 0;    //踏んでいるblock確認用
 
 	//当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 35, 60, ELEMENT_PLAYER, OBJ_HERO, 1);
+	Hits::SetHitBox(this, m_px, m_py, 35, 65, ELEMENT_PLAYER, OBJ_HERO, 1);
 
 }
 
@@ -49,13 +49,7 @@ void CObjHero::Action()
 	m_vx += -(m_vx*0.3000);
 
 	//自由落下運動
-		m_vy += 8.5 / (16.0f);
-	
-	/*
-	do {
-		m_vy += 8.5 / (16.0f);
-	} while (m_vy > 10);
-	*/
+	m_vy += 7.5 / (16.0f);
 
 	//Zキー入力で弾丸(トゲ)発射
 	if (Input::GetVKey('Z') == true)
@@ -65,7 +59,7 @@ void CObjHero::Action()
 			//発射音を鳴らす
 			Audio::Start(3);
 
-			//弾丸オブジェ作成
+			//オブジェ作成
 			CObjBullet* obj_b = new CObjBullet(m_px, m_py + 60.0f);
 			Objs::InsertObj(obj_b, OBJ_BULLET, 100);
 
@@ -87,16 +81,19 @@ void CObjHero::Action()
 				Audio::Start(8);
 				m_f = false;
 			}
-
 	}
 
+	else
+	{
+		m_f = true;
+	}
 	//ホバリング
-	else if (Input::GetVKey('C') == true)
-	{	
+	if (Input::GetVKey('C') == true)
+	{
 		//落下速度制御
-		if (m_vy < 15 && m_vy>=0) 
+		if (m_vy >= 0)
 		{
-			m_vy *= 15.3 / (16.0f);
+			m_vy = 50 / (16.0f);
 		}
 		if (m_f == true)
 		{
@@ -108,11 +105,6 @@ void CObjHero::Action()
 
 	}
 
-
-	else
-	{
-		m_f = true;
-	}
 
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
@@ -182,9 +174,9 @@ void CObjHero::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 70;
-	src.m_right = 64.0f + AniData[m_ani_frame] * 70;
+	src.m_top    = 0.0f;
+	src.m_left   = 0.0f  + AniData[m_ani_frame] * 56;
+	src.m_right  = 64.0f + AniData[m_ani_frame] * 56;
 	src.m_bottom = 72.0f;
 
 	//表示位置の設定

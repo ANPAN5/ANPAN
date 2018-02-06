@@ -44,14 +44,6 @@ void CObjBullet::Action()
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px+10, m_py);				//HitBoxの位置を弾丸の位置に更新
 
-	//弾丸が領域外に出たら弾丸削除
-	/*if (m_py > 00.0f)
-	{
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-	}*/
-
-
 	//当たり判定を行うオブジェクト情報
 	int data_base[2] =
 	{
