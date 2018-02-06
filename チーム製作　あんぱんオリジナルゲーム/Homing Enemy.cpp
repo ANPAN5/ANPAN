@@ -59,8 +59,15 @@ void CObjHomingEnemy::Action()
 	hit->SetPos(m_x, m_y - block->GetScroll());//HitBoxの位置を幽霊の位置に更新
 
 
+	//弾丸が領域外に出たら弾丸削除
+	if (m_py > 800.0f)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 
-	//主人公オブジェクトと接触したら幽霊削除
+
+	//弾丸オブジェクトと接触したら幽霊削除
 	if (hit->CheckObjNameHit(OBJ_BULLET) != nullptr)
 	{
 		this->SetStatus(false);
