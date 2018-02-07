@@ -24,10 +24,13 @@ void CObjHero::Init()
 	m_f = true;
 	m_x = 0.0f;
 	m_y = 0.0f;
+	m_time = 0;
 
 
 	m_ani_time = 0;
 	m_ani_frame = 1;		//静止フレームを初期にする
+
+	m_ani_saikou_time = 4;
 
 							//blockとの衝突状態確認用
 	m_hit_up = false;
@@ -82,18 +85,13 @@ void CObjHero::Action()
 				m_f = false;
 			}
 	}
-
-	else
-	{
-		m_f = true;
-	}
-	//ホバリング
-	if (Input::GetVKey('C') == true)
+	else if (Input::GetVKey('C') == true)
 	{
 		//落下速度制御
 		if (m_vy >= 0)
 		{
-			m_vy = 50 / (16.0f);
+			m_vy = 125
+				/ (16.0f);
 		}
 		if (m_f == true)
 		{
@@ -101,11 +99,12 @@ void CObjHero::Action()
 			Audio::Start(9);
 			m_f = false;
 		}
-
-
 	}
 
-
+	else
+	{
+		m_f = true;
+	}
 	//キーの入力方向
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
@@ -127,6 +126,12 @@ void CObjHero::Action()
 		m_ani_frame = 1;	//キー入力がない場合は静止フレーム
 		m_ani_time = 0;
 	}
+	if (m_ani_time > m_ani_saikou_time)
+	{
+		m_ani_frame += 1;
+		m_ani_time = 0;
+	}
+
 	if (m_ani_frame == 4)
 	{
 		m_ani_frame = 0;
@@ -145,8 +150,7 @@ void CObjHero::Action()
 
 	//HitBoxの内容を更新
 	CHitBox* hit = Hits::GetHitBox(this);	//作成したHitBox更新用の入り口を取り出す
-	hit->SetPos(m_px, m_py);				//入り口から新しい位置（主人公の位置)情報に置き換える
-
+	hit->SetPos(m_px+15, m_py-5);				//入り口から新しい位置（主人公の位置)情報に置き換える10
 	//敵と接触したら主人公削除
 	if (hit->CheckElementHit(ELEMENT_ENEMY) == true)
 	{
@@ -175,8 +179,8 @@ void CObjHero::Draw()
 
 	//切り取り位置の設定
 	src.m_top    = 0.0f;
-	src.m_left   = 0.0f  + AniData[m_ani_frame] * 56;
-	src.m_right  = 64.0f + AniData[m_ani_frame] * 56;
+	src.m_left   = 0.0f  + AniData[m_ani_frame] * 47;
+	src.m_right  = 61.0f + AniData[m_ani_frame] * 47;
 	src.m_bottom = 72.0f;
 
 	//表示位置の設定
