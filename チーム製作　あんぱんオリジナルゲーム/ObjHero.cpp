@@ -89,7 +89,7 @@ void CObjHero::Action()
 	{
 		m_vx = 0.0f;
 			//落下速度制御
-			if (m_vy >= 0)
+			if (m_vy > 1)
 			{
 				m_vy = 125
 					/ (16.0f);
@@ -99,13 +99,7 @@ void CObjHero::Action()
 				//滑空音
 				Audio::Start(9);
 				m_f = false;
-			}
-			//もし主人公がブロックの上に立っていた場合滑空を使えないようにする
-			if (m_f==1)
-			{
-				m_vy = 0;
-			}
-			
+			}			
 	}
 
 	else
