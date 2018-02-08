@@ -40,9 +40,9 @@ void CObjEnding::Draw()
 
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font::StrDraw(L"You did it!", 140, 300, 125, c);
+	Font::StrDraw(L"You did it!", 65, 270, 125, c);
 
-	Font::StrDraw(L"GameClear", 120, 600, 40, c);
+	Font::StrDraw(L"GameClear", 190, 450, 100, c);
 
-	Font::StrDraw(L"PleaseEnterKey", 220, 700, 50, c);
+	Font::StrDraw(L"Please EnterKey", 220, 700, 50, c);
 }
